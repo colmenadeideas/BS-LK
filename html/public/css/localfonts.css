@@ -1,0 +1,59 @@
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato/lato-hai-webfont.eot');
+    src: url('../fonts/lato/lato-hai-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato/lato-hai-webfont.woff') format('woff'),
+         url('../fonts/lato/lato-hai-webfont.ttf') format('truetype'),
+         url('../fonts/lato/lato-hai-webfont.svg#latohairline') format('svg');
+    font-weight: 100;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'Avenir Demi';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Demi'), url('../fonts/avenir/AvenirNextLTPro-Demi.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Avenir';
+font-style: normal;
+font-weight: normal;
+src: local('Avenir Next LT Pro Regular'), url('../fonts/avenir/AvenirNextLTPro-Regular.woff') format('woff');
+}
+
+
+
+@font-face {
+font-family: 'Avenir';
+font-style: normal;
+font-weight: bold;
+src: local('Avenir Next LT Pro Bold'), url('../fonts/avenir/AvenirNextLTPro-Bold.woff') format('woff');
+}
+
+
+
+
+@font-face {
+font-family: 'Avenir Demi Italic';
+font-style: normal;
+font-weight: normal;
+src: local('Avenir Next LT Pro Demi Italic'), url('../fonts/avenir/AvenirNextLTPro-DemiIt.woff') format('woff');
+}
+
+
+
+
+@font-face {
+font-family: 'Avenir';
+font-style: italic;
+font-weight: normal;
+src: local('Avenir Next LT Pro Italic'), url('../fonts/avenir/AvenirNextLTPro-It.woff') format('woff');
+}
+
+

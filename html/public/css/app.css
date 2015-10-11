@@ -1,0 +1,87 @@
+.leftactions{
+	box-sizing: border-box;
+	padding: 5px 30px 30px;
+	position: fixed;
+	background-color: #05B666;
+	text-align: left;
+	color: #2B2E31;
+	height:100%;
+	border:none;
+	pointer-events: none;
+}
+#desktop {
+	background:#FFF; height: 100%;
+	margin-top: 100px;
+	position: fixed; right: 0; top:0;
+	padding-top: 50px;
+}
+
+.posts-list{
+			list-style:none;
+			margin-left:225px;
+			max-width: 1500px;
+			text-align: center;
+			padding: 0;
+			opacity: 0;
+			font-size: 0;
+		}
+		.post{
+		  cursor: pointer;
+		  transition: 0.2s;
+		  background-color: #ffffff;
+		  
+		  /*padding: 25px;*/
+		 }
+		 .post img, .botones {
+		 	/*box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.08);*/
+		 }
+		 .posts-list button {
+		 /* border-radius: 2px;
+		  background-color: #87bae1;
+		  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+		  border: 0;
+		  color: #ffffff;
+		  font-weight: bold;
+		  font-size: 13px;
+		  cursor: pointer;
+		  width: 95px;
+		  height: 32px;*/
+		}
+		.botones .btn { border-radius:0; padding:15px 0;   border-color: #E8E8E8;   color: #939393;/*B3B3B3*/}
+		.editpart{ margin-top: 15px}
+		.approve.btn { color : #FF5B5B; transition: 0.2s; }
+		.approve.btn:active, .approve.btn:focus { background:#4BC34B; color : #FFF}
+		.approve.btn:active, .approve.btn:focus { background:#FFF; color : #4BC34B}
+		.edit { }
+		.reject { color : #FF5B5B}
+
+
+
+
+
+/*-----------------
+	Main Content
+------------------*/
+
+
+.main-content{
+	box-sizing: border-box;
+	text-align: center;
+	margin: 125px auto 60px;
+	padding: 0;
+}
+
+.main-content h3{
+	font-size: 28px;
+	color:  #5a96b9;
+	padding-bottom: 20px;
+}
+
+@media (max-width: 600px){
+
+	.main-content{
+		margin: 45px auto;
+		padding: 0 25px;
+	}
+
+}

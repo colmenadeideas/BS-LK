@@ -1,0 +1,4 @@
++ GET http://localhost/BEEAPPS/LIKES/Web/html/api/posts/json/board/1/
+200 OK
+
+returns every POST related to a BOARD id
