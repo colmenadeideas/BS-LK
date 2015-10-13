@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: "http://localhost/BEEAPPS/LIKES/Web/html/public/js",
+    baseUrl: "http://localhost/BS-LK/html/public/js",
     requireDefine:true,
     waitSeconds:12,
     paths: {

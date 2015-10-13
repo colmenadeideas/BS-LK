@@ -59,6 +59,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/controllers/usersController.php",
+			"settings":
+			{
+				"buffer_size": 4849,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/accountController.php",
+			"settings":
+			{
+				"buffer_size": 20693,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -92,10 +108,32 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CreativeCentreIntercon"
+		"/C/Users/besign/Desktop/Delia/BS-LK",
+		"/C/Users/besign/Desktop/Delia/BS-LK/app",
+		"/C/Users/besign/Desktop/Delia/BS-LK/app/controllers",
+		"/C/Users/besign/Desktop/Delia/BS-LK/app/models",
+		"/C/Users/besign/Desktop/Delia/BS-LK/html",
+		"/C/Users/besign/Desktop/Delia/BS-LK/includes",
+		"/C/Users/besign/Desktop/Delia/BS-LK/includes/libs",
+		"/C/Users/besign/Desktop/Delia/BS-LK/pre"
 	],
 	"file_history":
 	[
+		"/C/Users/besign/Desktop/Delia/BS-LK/app/controllers/accountController.php",
+		"/C/Users/besign/Desktop/Delia/BS-LK/includes/config/config.php",
+		"/C/Users/besign/Desktop/Delia/BS-LK/app/controllers/usersController.php",
+		"/C/Users/besign/Desktop/Delia/BS-LK/includes/libs/Functions.php",
+		"/C/Users/besign/Desktop/Delia/BS-LK/html/index.php",
+		"/C/Users/besign/Desktop/Delia/BS-LK/app/views/app/head.php",
+		"/C/Users/besign/Desktop/Delia/BS-LK/html/public/css/app.css",
+		"/C/Users/besign/Desktop/Delia/BS-LK/html/public/css/localfonts.css",
+		"/C/Users/besign/Desktop/Delia/BS-LK/html/public/js/globals.js",
+		"/C/Users/besign/Desktop/Delia/BS-LK/html/public/js/main-app.js",
+		"/C/Users/besign/Desktop/Delia/BS-LK/pre/html/index.php",
+		"/C/Users/besign/Desktop/Delia/BS-LK/pre/html/.htaccess",
+		"/C/Users/besign/Desktop/Delia/BS-LK/html/.htaccess",
+		"/C/Users/besign/Desktop/Delia/BS-LK/html/public/js/config.js",
+		"/C/Users/besign/Desktop/Delia/BS-LK/includes/config/local.php",
 		"/Users/dlarez/BS-OK-docu/source/layouts/layout.erb",
 		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/includes/libs/Api.php",
 		"/Users/dlarez/BS-OK-docu/source/index.md",
@@ -196,13 +234,14 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"C:\\Users\\besign\\Desktop\\Delia\\BS-LK",
 			"",
 			"/Users/dlarez/Delia-E-Larez/Trabajos/Arte Casero/Nutribites/Web/wp-content"
 		]
@@ -212,6 +251,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"identify",
+			"print_r",
+			"BEEAPPS",
 			"file",
 			"grad",
 			"border",
@@ -291,8 +333,67 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/controllers/usersController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4849,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1017,
+								1017
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1531.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/controllers/accountController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20693,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6144,
+								6144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2703.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -332,7 +433,7 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "LIKES.sublime-project",
+	"project": "LIKES-BSLK.sublime-project",
 	"replace":
 	{
 		"height": 42.0

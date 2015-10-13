@@ -80,9 +80,9 @@
 
 							$array_user = json_decode(json_encode($data->user), true);
 							$array_user['instagram_id'] = $array_user['id'];
-							$array_user['data'] = $array_user;
+							$array_user['data'] 		= $array_user;
 							$array_user['access_token'] = $data->access_token;
-							//print_r($array_user); exit;
+							$array_user['status'] 		= 'active';
 								
 							//Register User				
 							require_once('usersController.php');	

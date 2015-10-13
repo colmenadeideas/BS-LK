@@ -11,11 +11,11 @@
     <title><?php echo $this->title; ?></title>
     <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet">-->
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
-    <!--<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>-->	
+    <!--<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>	-->
 	
 	<link href="<?php echo CSS; ?>bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo CSS; ?>font-awesome.min.css" rel="stylesheet">
-	<!-- <link href="<?php echo CSS; ?>localfonts.css" rel="stylesheet"> -->
+	<link href="<?php echo CSS; ?>localfonts.css" rel="stylesheet">
 	<link href="<?php echo CSS; ?>styles.css" rel="stylesheet">
 	<link href="<?php echo CSS; ?>app.css" rel="stylesheet">
 	<script src="<?php echo JS; ?>assets/jquery.min.js"></script>

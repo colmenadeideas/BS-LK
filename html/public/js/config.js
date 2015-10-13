@@ -6,7 +6,7 @@ var isProcessing = false;
 
 if (modo === 'local') {
 
-	var URL = "http://localhost/BEEAPPS/LIKES/Web/html/";
+	var URL = "http://localhost/BS-LK/html/";
 	var urlCheck = '/html/';
 
 	var position = 2;

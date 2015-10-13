@@ -1,6 +1,6 @@
 <?php
 		//Path Info
-		define ('URL', "http://localhost/BEEAPPS/LIKES/Web/html/"); 
+		define ('URL', "http://localhost/BS-LK/html/"); 
 
 		//Server Info
 		define ( 'DB_SERVER', 'localhost');
@@ -20,7 +20,7 @@
 		
 		//Database Connection
 		define ( 'DB_TYPE', 'mysql');	
-		define ( 'DB_USER', 'root');
+		define ( 'DB_USER', 'rootw');
 		define ( 'DB_PASSWORD', 'root');
 		define ( 'DB_PASS', 'root');
 		define ( 'DB_NAME', 'db23550_likes'); 
