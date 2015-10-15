@@ -5,10 +5,50 @@ class Api extends ApiQuery {
 
 	}
 
+	//PRINT FORMAT FUNCTION
+	public function printResults($print = "json", $array_final) {
+		if ($print == 'json') {
+			echo json_encode($array_final, JSON_UNESCAPED_UNICODE);
+		} else {
+			//MODO "ARRAY"
+			echo $array_final;
+		}
+	}
+
+
+
 	public function boards($print = "json", $parameter = "from", $id) {
 		$id = escape_value($id);
 		$parameter = escape_value($parameter);
-		$array_posts = ApiQuery::getBoards($parameter,$id);	
+
+		//is RELATIONSHIPS table always going to be accessed by user id?
+		$findRelationship = ApiQuery::getRelationships("users", $id);
+		if (empty($findRelationship)) {
+			
+			$response["tag"] = "boards";
+			$response["empty"] = 1;
+			$response["response"] = "No boards";
+			$response["template"] = "";
+
+			Api::printResults($print, $response);
+
+		} else {
+			$i = 0;
+			foreach ($findRelationship as $relationship) {
+				//$decodeBoards = json_decode($relationship['relationships'], TRUE);
+				$array_final["tag"] = "boards";
+				$array_final["empty"] = 0;
+				$array_final["template"] = "";
+
+				$boards = Api::getBoards("relationship", $relationship['id']);
+				$array_final["boards"][$i] = $boards[0];
+				$i++;
+			}
+			//$boards = ApiQuery::getBoards();
+			//Return Function
+			Api::printResults($print, $array_final);
+		}
+
 	}
 
 	public function posts($print = "json", $parameter = "from", $id, $term = "", $for_date="", $to_date="") {
@@ -29,11 +69,8 @@ class Api extends ApiQuery {
 			$response["empty"] = 1;
 			$response["response"] = NO_PRACTICES_AVAILABLE;
 
-			if ($print == 'json') {
-				echo json_encode($response, JSON_UNESCAPED_UNICODE);
-			} else {//modo "array"
-				return $response;
-			}
+			Api::printResults($print, $response);
+
 		} else {
 			
 			$postFields = DB::columnList('posts');
@@ -72,12 +109,7 @@ class Api extends ApiQuery {
 			}
 			
 			
-					
-			if ($print == 'json') {
-				echo json_encode($array_final, JSON_UNESCAPED_UNICODE);
-			} else {//modo "array"
-				return $array_final;
-			}
+			Api::printResults($print, $array_final);
 		}
 
 	}

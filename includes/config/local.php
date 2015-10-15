@@ -20,7 +20,7 @@
 		
 		//Database Connection
 		define ( 'DB_TYPE', 'mysql');	
-		define ( 'DB_USER', 'rootw');
+		define ( 'DB_USER', 'root');
 		define ( 'DB_PASSWORD', 'root');
 		define ( 'DB_PASS', 'root');
 		define ( 'DB_NAME', 'db23550_likes'); 

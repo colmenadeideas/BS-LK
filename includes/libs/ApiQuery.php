@@ -4,15 +4,23 @@
 		
 		public function __construct() {
 			
-	
 		}
 		
+		public function getRelationships($param = "users", $id){
+			$param = escape_value($param);
+			$id = escape_value($id);
+			return DB::query("SELECT * FROM " . DB_PREFIX . "relationships WHERE $param LIKE '%".$id."%'
+							AND $param REGEXP '\"([)^".$id."+$(])'");
+
+		}
+
 		public function getBoards($param, $id){
 			$param = escape_value($param);
-				return DB::query("SELECT * FROM " . DB_PREFIX . "boards WHERE $param=%i", $id);
+			return DB::query("SELECT * FROM " . DB_PREFIX . "boards WHERE $param=%i", $id);
 		}
 
 		public function getPosts($param, $id, $term=""){
+			$id = escape_value($id);
 			if ($param == "data") {
 				$param = escape_value($param);
 				return DB::query("SELECT * FROM " . DB_PREFIX . "posts WHERE data LIKE '%".$id."%' AND data REGEXP '\"".$term."\":\"([)^".$id."+$(])'");

@@ -2,31 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web"
-		},
-		{
-			"path": "/Users/dlarez/Delia-E-Larez/Trabajos/Edil/BS-EDIL"
-		},
-		{
-			"path": "/Users/dlarez/Delia-E-Larez/Trabajos/Model'sView/sistema"
-		},
-		{
-			"path": "/Users/dlarez/Downloads/WORDPRESS THEMES"
-		},
-		{
-			"path": "/Users/dlarez/Delia-E-Larez/Trabajos/Pedralbes/Web/wp-content/themes/flat-theme"
-		},
-		{
-			"path": "/Users/dlarez/Delia-E-Larez/Trabajos/BS-OK"
-		},
-		{
-			"path": "/Users/dlarez/Delia-E-Larez/Trabajos/Cinev"
-		},
-		{
-			"path": "/Users/dlarez/Delia-E-Larez/Trabajos/PuntoLaser/Fase-1"
-		},
-		{
-			"path": "/Users/dlarez/Delia-E-Larez/Trabajos/CreativeCentreIntercon"
+			"path": "."
 		}
 	]
 }

@@ -21,6 +21,16 @@
 
 			$this->view->render("app/head");
 			$this->view->render("app/nav");
+			$this->view->render("app/board/list"); // buildpage
+			$this->view->render("app/footer");
+		}
+
+
+		public function posts(){
+	        
+			//$this->view->userdata = $this->user->getUserdata();	
+			$this->view->render("app/head");
+			$this->view->render("app/nav");
 			$this->view->render("app/post/list"); // buildpage
 			$this->view->render("app/footer");
 		}

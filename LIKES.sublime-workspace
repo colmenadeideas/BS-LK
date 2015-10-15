@@ -3,58 +3,6 @@
 	{
 		"selected_items":
 		[
-			[
-				"ac",
-				"actor"
-			],
-			[
-				"for",
-				"foreach	foreach …"
-			],
-			[
-				"print",
-				"print_r"
-			],
-			[
-				"vi",
-				"viewer_data"
-			],
-			[
-				"view",
-				"viewer"
-			],
-			[
-				"acces",
-				"access_token"
-			],
-			[
-				"arr",
-				"array_user"
-			],
-			[
-				"con",
-				"config"
-			],
-			[
-				"w",
-				"with"
-			],
-			[
-				"l",
-				"local"
-			],
-			[
-				"btn",
-				"btn-default"
-			],
-			[
-				"border-c",
-				"border-color"
-			],
-			[
-				"backgroun",
-				"background-color"
-			]
 		]
 	},
 	"buffers":
@@ -92,119 +40,20 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CreativeCentreIntercon"
+		"/Users/e0979/BESIGN/BS-LK"
 	],
 	"file_history":
 	[
-		"/Users/dlarez/BS-OK-docu/source/layouts/layout.erb",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/includes/libs/Api.php",
-		"/Users/dlarez/BS-OK-docu/source/index.md",
-		"/Users/dlarez/BS-OK-docu/source/stylesheets/_variables.scss",
-		"/Users/dlarez/BS-OK-docu/source/stylesheets/screen.css.scss",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/html/public/js/main-site.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/preview.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/controllers/siteController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/includes/libs/Functions.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/html/public/css/style.css",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/search.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/html/index.php",
-		"/Users/dlarez/BS-OK-documentation/source/index.md",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/slate/source/index.md",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/videoplayer.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/default/head.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/html/public/css/videoplayer.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/models/accountModel.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/includes/config/local.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/html/public/js/app/site.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/models/siteModel.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/includes/libs/ApiQuery.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/includes/libs/Helper.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/includes/libs/User.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/includes/libs/VideoStream.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/controllers/accountController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/login/logbox.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/default/nav.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/controllers/panelController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/views/default/head.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/models/paymentsModel.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/models/usersModel.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Model'sView/sistema/app/controllers/accountController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/login/recoverybox.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/default/footer.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/default/preloader.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/includes/libs/User.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Model'sView/sistema/app/views/admin/default/head.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Edil/BS-EDIL/app/controllers/retencionesController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Edil/BS-EDIL/app/controllers/miwebController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Edil/BS-EDIL/app/views/default/header.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/login/register.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/settings/password-change.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/views/settings/password-change.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/settings/default/settings-menu.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/views/settings/default/settings-menu.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/settings/default/nav.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/views/settings/default/nav.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/settings/default/head.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/views/settings/default/head.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/app/views/settings/default/footer.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/views/settings/default/footer.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/includes/libs/View.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/includes/lang/es_ES/site.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/html/public/js/app/panel-start.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/html/public/js/main-panel.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/includes/lang/es_ES/system.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Cinev/Web/html/public/js/config.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/css/styles.css",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/controllers/appController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/views/site/login.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/includes/libs/User.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/controllers/accountController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/controllers/usersController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/models/accountModel.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/includes/config/config.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/includes/config/local.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/models/accountModel.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/main-site.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/globals.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/controllers/usersController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/controllers/siteController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/includes/libs/Controller.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/includes/libs/Instagram.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/CapitanAmerica/BS-CA/app/controllers/accountController.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/app/login.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/index.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/app/site.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/config/local.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/common.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/config/server.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/views/default/head.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/config.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/app/namespace.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/functions.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/js/app/site-start.js",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/css/temp_styles.css",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/views/default/footer.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/views/default/nav.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/html/public/css/localfonts.css",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/BEEAPPS/LIKES/Web/app/controllers/apiController.php",
-		"/Users/dlarez/Library/Caches/Cleanup At Startup/Transmit/63F86797-E6D6-40EA-86E1-F585D6A00866/form-process.php",
-		"/Users/dlarez/Library/Caches/Cleanup At Startup/Transmit/C2584B13-3964-46AD-A05F-2F75A1ED967C/form-process.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Arte Casero/Nutribites/Web/wp-content/themes/flatshop/theme-functions.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Arte Casero/Nutribites/Web/wp-content/themes/flatshop/woocommerce/woocommerce-template.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Arte Casero/Nutribites/Web/wp-content/themes/flatshop/themify/themify-utils.php",
-		"/Users/dlarez/Delia-E-Larez/Trabajos/Arte Casero/Nutribites/Web/wp-content/themes/flatshop/index.php"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 0.0
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
-			"",
-			"/Users/dlarez/Delia-E-Larez/Trabajos/Arte Casero/Nutribites/Web/wp-content"
 		]
 	},
 	"find_state":
@@ -212,67 +61,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"file",
-			"grad",
-			"border",
-			"000",
-			"subheader",
-			"image_tag",
-			"\nlogo",
-			"wrapper",
-			"content",
-			"li ",
-			"wrapper li",
-			"bord",
-			"FFF",
-			"Helve",
-			".content",
-			".content h1",
-			"content h1",
-			"family",
-			"font",
-			"viewer",
-			"viewerç",
-			"view",
-			"$main-",
-			"video",
-			"getUserdata",
-			"\ngetUSer",
-			"ico\nico",
-			"load\nload",
-			"load",
-			"load\n\nload",
-			"user",
-			"edit",
-			"te has registr",
-			"recap",
-			"\nrecaptcha_challenge_field",
-			"role\n\n\n",
-			"role",
-			"style\n\n",
-			"response\nresponse\n\nres\n",
-			"movie",
-			"$table",
-			"$array_user\n\n",
-			"token",
-			"account/login",
-			"process",
-			"aut",
-			"authe",
-			"$instagram",
-			"insert",
-			"except",
-			"global",
-			"url('",
-			"href",
-			"product-bg-container",
-			"product-image",
-			"class=\"product-image\"",
-			"themify_the_footer_text",
-			"Themify WordPress Themes",
-			"Powered",
-			"Themify",
-			"Powered"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -280,7 +68,6 @@
 		"regex": false,
 		"replace_history":
 		[
-			"url('../fonts/avenir/"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -298,11 +85,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 0.0
 	},
 	"input":
 	{
-		"height": 31.0
+		"height": 0.0
 	},
 	"layout":
 	{
@@ -335,7 +122,7 @@
 	"project": "LIKES.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 0.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -373,7 +160,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 283.0,
+	"side_bar_width": 150.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

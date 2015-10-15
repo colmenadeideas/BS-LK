@@ -30,8 +30,21 @@ define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 			window.location.hash = 'post/' + postIndex;
 		})
 	}*/
+	function boards() {
 
-	function run() {
+		//window.location.hash = '#search'; //for binding to back state TODO could add to url params for refreshing maybe
+		
+		$.getJSON(URL+"api/boards/json/from/1", function(data) {
+		
+			posts = data;
+
+			var TemplateScript = $("#Board-Template").html(); 
+	        var Template = Handlebars.compile(TemplateScript);
+
+			$(".all-boards").append(Template(data)); 
+		});
+	}
+	function runpost() {
 
 		//window.location.hash = '#search'; //for binding to back state TODO could add to url params for refreshing maybe
 		
@@ -281,7 +294,7 @@ define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 
 
 	return {
-		run: run
+		boards: boards
 	}
 
 });

@@ -20,6 +20,9 @@
 		}
 		
 				
+		public function boards($print="json", $from = "from", $who){
+			Api::boards($print, $from, $who);
+		}
 		public function posts($print="json", $from = "from", $who){
 			Api::posts($print, $from, $who);
 		}

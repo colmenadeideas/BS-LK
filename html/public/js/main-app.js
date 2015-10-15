@@ -55,7 +55,7 @@ require([
     ],
     function($, app, start) { 
 
-      var accessArray = window.location.pathname.split('/')[5];
+      var accessArray = window.location.pathname.split('/')[3];
       console.log("Access:" + accessArray);
 
       switch(accessArray) {
@@ -68,7 +68,7 @@ require([
                 default:                  
                   break;
               }*/
-              app.run();                            
+              app.boards();                            
             }); 
           break;
 
