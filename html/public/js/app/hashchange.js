@@ -26,68 +26,33 @@ define(function() {
 			cache[url] = $('<div class="view"/>').appendTo('#desktop').load(url, function() {
 
 				var active_page = url.split('/');
-				
-				switch(active_page[1]) {
-					case "doctor":
-						require(['app/doctor'], function($) {
-							
-							switch(active_page[2]) {
-								case 'details':
-									doctorLoadDetails();
-									break;
-								default:
-									//doctorLoadDetails();
-									break;
-							}
-							
+				console.log(active_page[0]);
+				switch(active_page[0]) {
+					case "boards":
+						require(['app/app'], function(app) {
+							app.boards();
 						});						
 						break;
-
-					case "patient":
-						require(['app/patient'], function(patient) {
-							
-							switch(active_page[2]) {
-								case 'add':
-									patient.add();
-									break;
-								default:
-									//doctorLoadDetails();
-									break;
-							}															
-						});						
-						break;
-
-					case "practice":
-						require(['app/practice'], function(practice) {
-							practice.add();								
-						});						
-						break;	
-
-					case "appointments":
-						require(['app/appointments'], function(appointments) {
-
-							switch(active_page[2]) {
-								case 'add':	
-								appointments.autocomplete();	
-								appointments.calendar();								
+					case "posts":
+						require(['app/app'], function(app) {
+							app.posts(active_page[1],active_page[2]);
+						/*	switch(active_page[2]) {
+								case 'boards':	
+									appointments.autocomplete();	
+									appointments.calendar();								
 									break;
 								default:
 									appointments.list();
 									break;
-							}																					
-
-						});						
-						break;
-
-					case "schedule":
-						require(['app/schedule'], function(schedule) {
-							schedule.add();
-														
+							}*/																					
 						});						
 						break;
 					
-					default:					
-						break;
+					/*default:
+						require(['app/app'], function(app) {
+							app.boards();																					
+						});				
+						break;*/
 				}
 				$('#preloader').fadeOut();
 			});

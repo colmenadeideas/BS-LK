@@ -1,4 +1,4 @@
-define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
+define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Handlebars, posts) {
 	
 	/*// This function is called only once - on page load.
 	// It fills up the posts list via a handlebars template.
@@ -32,22 +32,24 @@ define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 	}*/
 	function boards() {
 
-		//window.location.hash = '#search'; //for binding to back state TODO could add to url params for refreshing maybe
+		window.location.hash = '#boards'; //for binding to back state TODO could add to url params for refreshing maybe
 		
 		$.getJSON(URL+"api/boards/json/from/1", function(data) {
 		
-			posts = data;
-
+			/*boards = data.boards;
+			console.log(boards);
+*/
 			var TemplateScript = $("#Board-Template").html(); 
 	        var Template = Handlebars.compile(TemplateScript);
 
 			$(".all-boards").append(Template(data)); 
 		});
 	}
-	function runpost() {
+	function posts(from,value) {
 
-		//window.location.hash = '#search'; //for binding to back state TODO could add to url params for refreshing maybe
-		
+		window.location.hash = '#posts/'+from+'/'+value; //for binding to back state TODO could add to url params for refreshing maybe
+		console.log(from);
+
 		$.getJSON(URL+"api/posts/json/board/1/", function(data) {
 			
 			posts = data;
@@ -56,6 +58,11 @@ define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 	        var Template = Handlebars.compile(TemplateScript);
 
 			$(".all-posts").append(Template(data)); 
+
+			require(['app/posts'], function(posts) {
+				posts.run();
+			});
+
 
 		});
 
@@ -294,7 +301,8 @@ define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 
 
 	return {
-		boards: boards
+		boards: boards,
+		posts:  posts
 	}
 
 });

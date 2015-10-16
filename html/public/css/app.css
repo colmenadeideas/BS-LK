@@ -8,6 +8,8 @@
 	height:100%;
 	border:none;
 	pointer-events: none;
+
+    margin-top: 100px;
 }
 #desktop {
 	background:#FFF; height: 100%;
@@ -15,6 +17,29 @@
 	position: fixed; right: 0; top:0;
 	padding-top: 50px;
 }
+.board:hover { padding-top: 5px; }
+.board, .post {
+	cursor: pointer;
+	transition: all ease 0.2s;
+	/*background-color: #ffffff;*/
+}
+.board .image { box-shadow: 2px 2px 2px rgba(0,0,0,0.3); }
+.board .overtitle { background: #FFF; position: absolute; bottom: 0px;  margin-right: 15px; padding-bottom: 10px;}
+.board .topactions   { position: absolute; top: 0px; right: 0px; padding: 10px; margin-right: 15px;}
+.board h3 { margin: 10px 0 0 0;}
+.board span { color:#666;}
+.users-face { width: 48px; height:48px; margin-left:10px; float: left ;  }
+.users-face img {border-radius: 50%; }
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+.modal-backdrop { height: 100%; }
+.popbox .modal-body { padding: 0 }
+.popbox .modal-content { border: none; box-shadow: none}
+
+
 
 .posts-list{
 			list-style:none;
@@ -25,13 +50,7 @@
 			opacity: 0;
 			font-size: 0;
 		}
-		.post{
-		  cursor: pointer;
-		  transition: 0.2s;
-		  background-color: #ffffff;
-		  
-		  /*padding: 25px;*/
-		 }
+		
 		 .post img, .botones {
 		 	/*box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.08);*/
 		 }
@@ -77,11 +96,12 @@
 	padding-bottom: 20px;
 }
 
-@media (max-width: 600px){
+@media (max-width: 1024px){
 
 	.main-content{
 		margin: 45px auto;
 		padding: 0 25px;
 	}
+	.users-face { width: 32px; height:32px;  }
 
 }

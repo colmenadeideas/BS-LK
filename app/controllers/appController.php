@@ -12,27 +12,24 @@
 			
 		}
 		
-		public function index(){
-	        
-			//$this->view->userdata = $this->user->getUserdata();	
-
-			//$this->view->posts = Api::posts("array", "from", "dlarez@besign.com.ve");
-			//print_r($this->view->posts );
-
+		public function index() {
 			$this->view->render("app/head");
 			$this->view->render("app/nav");
 			$this->view->render("app/board/list"); // buildpage
 			$this->view->render("app/footer");
 		}
 
-
-		public function posts(){
-	        
+		public function boards() {
 			//$this->view->userdata = $this->user->getUserdata();	
-			$this->view->render("app/head");
-			$this->view->render("app/nav");
+			
+			$this->view->render("app/board/list"); // buildpage
+			
+		}
+
+
+		public function posts($action,$id){
+
 			$this->view->render("app/post/list"); // buildpage
-			$this->view->render("app/footer");
 		}
 	}
 ?>

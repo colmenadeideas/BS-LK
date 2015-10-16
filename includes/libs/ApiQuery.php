@@ -30,7 +30,14 @@
 				return DB::query("SELECT * FROM " . DB_PREFIX . "posts WHERE $param=%i", $id);
 			}			
 		}
+
+		public function getUser($id){
+			//TODO test with real data. SHould we get 'users' or 'users_profile'
+			return DB::query("SELECT * FROM " . DB_PREFIX . "users_profile WHERE id=%i", $id);
+		}
 		
+
+
 	
 		public function autocomplete($what="all", $string){
 			
@@ -73,13 +80,7 @@
 				 					 SELECT id, specialty.name AS term, 'specialty' FROM specialty
 				 					 ) AS autocomplete_table " . $string . " ORDER BY in_table;
 				 				 ");
-				 						}
-		
-		
-	
-		
-		
-
+		}
 
 	}
 ?>

@@ -41,7 +41,7 @@ require.config({
         'common': ['jquery','assets/all','assets/jquery-ui.min','assets/bootstrap.min','assets/jquery.validate.min','assets/jquery.easing.min','assets/jquery.scrollTo.min','assets/bootstrap-datetimepicker-v4','assets/jquery.geocomplete.min','assets/moment.min','assets/fullcalendar.min','assets/jsonsql','functions','config'],
         'app/search': ['jquery','common', 'globals'],
         'app/doctor': ['jquery','common', 'globals','app/search','assets/jquery.easing.min', 'assets/jquery.carouFredSel-6.1.0-packed'],
-        'app/panel': ['jquery','common', 'globals','assets/jquery.validate.min'],
+        'app/app': ['jquery','common', 'globals','assets/jquery.validate.min', 'app/posts'],
         'app/login': ['jquery','globals','assets/jquery.validate.min'],
         'app/site':  ['globals', 'app/login'],
         'app/hashchange': ['common', 'assets/handlebars.min', 'app/site', 'app/login'],
@@ -55,21 +55,23 @@ require([
     ],
     function($, app, start) { 
 
-      var accessArray = window.location.pathname.split('/')[3];
-      console.log("Access:" + accessArray);
-
-      switch(accessArray) {
+      var accessArray = window.location.pathname.split('/');
+      var accessHash = $.param.fragment();
+      
+      console.log("Access:" + accessArray +" Hash:" + accessHash);
+      
+      switch(accessArray[3]) {
         case "app":         
-          require(['app/app'], function(app) {              
-              /*switch(active_page[2]) {
-                case 'add':
-                  patient.add();
+          /*require(['app/app'], function(app) {              
+              switch(accessHash) {
+                case 'posts':
+                  app.posts();
                   break;
-                default:                  
+                default: 
+                  app.boards();                   
                   break;
-              }*/
-              app.boards();                            
-            }); 
+              }                      
+          }); */
           break;
 
         default: // CASE "SITE"

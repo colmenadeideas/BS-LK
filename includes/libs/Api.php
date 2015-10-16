@@ -42,9 +42,23 @@ class Api extends ApiQuery {
 
 				$boards = Api::getBoards("relationship", $relationship['id']);
 				$array_final["boards"][$i] = $boards[0];
+				$array_final["boards"][$i]['data'] = json_decode($boards[0]['data']);
+
+				//Users
+				$users = json_decode($relationship['users'], TRUE);
+				$e = 0;
+				foreach ($users as $user) {
+					$userData = Api::getUser($user['id']);
+					$array_final["boards"][$i]['users'][$e] = $userData[0];
+					$e++;
+				}
+				//Posts count
+				$postCount = Api::getPosts("parent", $boards[0]['id']);
+				$count = DB::count();
+				$array_final["boards"][$i]['count'] = $count;
+
 				$i++;
 			}
-			//$boards = ApiQuery::getBoards();
 			//Return Function
 			Api::printResults($print, $array_final);
 		}
