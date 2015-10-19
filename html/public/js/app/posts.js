@@ -1,4 +1,4 @@
-define(['globals'], function(globals) {
+define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 	
 	function add() {
 		//var step;		
@@ -9,16 +9,20 @@ define(['globals'], function(globals) {
 
 	function run() {
 	
-		$('.post .image').click( function(){
-			var imageSrc = $(this).children('img').attr('src');
-			var post = $(this).parent('.post');
-			console.log('click'+imageSrc);
+		$('.post .image, .post .comment-action').click( function(){
+			var postId 	 = $(this).data('post');
+			var imageSrc = $("#post-"+postId+ " .image").children('img').attr('src'); 
+			//var imageSrc = $(this).children('img').attr('src');
+			//var post 	 = $(this).parent('.post');
+			//var id 		 = post.attr('id');
 			
+			console.log(' '+imageSrc);
+			
+			$('.image-box img').attr('src', imageSrc);
+
 			/*
-			var id = this_post.attr('id');
 			var title = this_post.find('h2').html();
-			$('.lightbox-img').attr('src', imageSrc);
-			$('.inner-lightbox h3').html(title);
+			
 			$('.lightbox').attr('id', id);  //Te light box will have the same id from the current image
 			$('.lightbox').fadeIn(500);
 			$.ajax({
@@ -30,7 +34,13 @@ define(['globals'], function(globals) {
 					});
 				}
 			});*/
-		});	
+			$.getJSON(URL+"api/comments/json/post/"+postId, function(data) {
+				//var TemplateScript = $("#Board-Template").html(); 
+		        //var Template = Handlebars.compile(TemplateScript);
+				//$(".all-boards").append(Template(data)); 
+			});
+		});
+
 	}
 	
 

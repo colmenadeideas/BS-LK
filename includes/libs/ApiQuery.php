@@ -30,6 +30,10 @@
 				return DB::query("SELECT * FROM " . DB_PREFIX . "posts WHERE $param=%i", $id);
 			}			
 		}
+		public function getComments($param, $id){
+			$param = escape_value($param);
+			return DB::query("SELECT * FROM " . DB_PREFIX . "comments WHERE $param=%i", $id);
+		}
 
 		public function getUser($id){
 			//TODO test with real data. SHould we get 'users' or 'users_profile'

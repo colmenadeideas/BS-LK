@@ -18,6 +18,10 @@
 		return $data;
 	}
 	
+	function dateFormat($date) {
+		$d = new DateTime($date);
+		return $d->format('d/m/y');
+	}
 	//Replace commas with dot, for numerical Values
 	function pointforcomma($data){
 		$data = str_replace(",", ".", $data);

@@ -30,6 +30,7 @@ define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Hand
 			window.location.hash = 'post/' + postIndex;
 		})
 	}*/
+
 	function boards() {
 
 		window.location.hash = '#boards'; //for binding to back state TODO could add to url params for refreshing maybe
@@ -50,7 +51,10 @@ define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Hand
 		window.location.hash = '#posts/'+from+'/'+value; //for binding to back state TODO could add to url params for refreshing maybe
 		console.log(from);
 
-		$.getJSON(URL+"api/posts/json/board/1/", function(data) {
+
+
+
+		$.getJSON(URL+"api/posts/json/board/"+"/"+value, function(data) {
 			
 			posts = data;
 

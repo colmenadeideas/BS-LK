@@ -96,6 +96,7 @@ class Api extends ApiQuery {
 					$array_final['posts'][$i][$field] = $post[$field];
 				}
 				$array_final['posts'][$i]['data'] = json_decode($post['data']);
+				$array_final['posts'][$i]['date'] = dateFormat($post['creationdate']);
 				
 			
 				/*$array_schedules = ApiQuery::getDoctorPracticesSchedule($post["id"]);
@@ -122,130 +123,53 @@ class Api extends ApiQuery {
 			
 			}
 			
+			Api::printResults($print, $array_final);
+		}
+
+	}
+
+	public function comments($print = "json", $parameter = "post", $id, $for_date="", $to_date="") {
+		
+		$id = escape_value($id);
+
+		/*
+		if($for_date == "") { $for_date = date("Y-m-d");	}
+		if($to_date == "") 	{ $to_date 	= date("Y-m-d", strtotime("-60 days"));	}
+		*/
+		
+		$array_comments = ApiQuery::getComments($parameter,$id);	
+		//print_r($array_comments); exit;	
+
+		//No Practices
+		if (empty($array_comments)) {
+			$response["tag"] = "comments";
+			$response["empty"] = 1;
+			$response["response"] = "No hay comentarios";
+
+			Api::printResults($print, $response);
+
+		} else {
+			
+			$commentFields = DB::columnList('comments');
+			$i = 0;
+			$array_final["empty"] = 0;
+			
+			foreach ($array_comments as $comment) {
+				foreach ($commentFields as $field) {
+					$array_final['comments'][$i][$field] = $comment[$field];
+				}
+				//$array_final['comments'][$i]['data'] = json_decode($comment['data']);
+				$user = Api::getUser($comment['user']);
+				$array_final['comments'][$i]['user'] = $user[0];
+
+				$i++;
+			}
 			
 			Api::printResults($print, $array_final);
 		}
 
 	}
 
-	//Appointments/arreglo/doctor/22/post/11/2014-02-09
-	public function appointments($print = "json", $by = "doctor", $id, $second_parameter = "", $post_id = "", $for_date = "", $to_date = "") {
-		$id = escape_value($id);
-
-		if (!empty($second_parameter)) {
-			$second_parameter = escape_value($second_parameter);
-			$post_id = escape_value($post_id);
-			$for_date = escape_value($for_date);
-			$to_date = escape_value($to_date);
-
-			//$this->loadModel('appointments');
-			$array_appointments = ApiQuery::getAppointmentsByDate($id, $for_date, $post_id);
-			//$this->loadModel('doctor');
-			$array_posts = ApiQuery::getDoctorPractice($id, $post_id);
-			$postFields = DB::columnList('clinic');
-			// $this->loadModel('patient');
-			$array_final["empty"] = 0;
-			$array_final['dates'][0]['date_string'] = $for_date;
-
-			foreach ($postFields as $postfield) {
-				$array_final['dates'][0]['post'][0][$postfield] = $array_posts[0][$postfield];
-			}
-			$a = 0;
-			foreach ($array_appointments as $appointment) {
-				$array_patient_data = ApiQuery::getPatientBy("id", $appointment['id_patient']);
-				$appointment['patient_data'] = $array_patient_data;
-				$array_final['dates'][0]['post'][0]['appointments'][$a] = $appointment;
-				$a++;
-			}
-
-			if ($print == 'json') {
-				echo json_encode($array_final, JSON_UNESCAPED_UNICODE);
-			} else {//modo "array"
-				return $array_final;
-			}
-
-		} else {
-
-			$array_posts = ApiQuery::getDoctorPractices($id);
-			
-			if (empty($array_posts)) {
-				//Doctor has NO posts
-				$response["tag"] = "posts";
-				$response["empty"] = 1;
-				$response["response"] = NO_PRACTICES_AVAILABLE;
-	
-				if ($print == 'json') {
-					echo json_encode($response, JSON_UNESCAPED_UNICODE);
-				} else {//modo "array"
-					return $response;
-				}
-				
-			} else {
-				$postFields = DB::columnList('clinic');
-
-				$array_dates = ApiQuery::getAppointmentsDate("id_doctor", $id, "ASC");
-				
-				//Later use inside
-				//$this->loadModel('patient');
-					
-				if (empty($array_dates)) {
-	
-					$response["tag"] = "appointments";
-					$response["empty"] = 1;
-					$response["response"] = NO_APPOINTMENTS_DATE;
-	
-					//echo json_encode($response);
-	
-					if ($print == 'json') {
-						echo json_encode($response, JSON_UNESCAPED_UNICODE);
-					} else {//modo "array"
-						return $response;
-					}
-	
-					} else {
-		
-						$i = 0;
-						$array_final["empty"] = 0;
-						foreach ($array_dates as $date) {
-							$date_array['date_string'] = $date["date"];
-							//$array_final['appointments'][$i]['date'] = $date_array;
-							$array_final['dates'][$i] = $date_array;
-		
-							$p = 0;
-							foreach ($array_posts as $post) {
-								$array_appointments = ApiQuery::getAppointmentsByDate($id, $date["date"], $post["id"]);
-	
-								foreach ($postFields as $postfield) {
-									$array_final['dates'][$i]['post'][$p][$postfield] = $post[$postfield];
-									//$array_final['appointments'][$i]['date']['post'][$p][$postfield] = $post[$postfield];
-								}
-	
-								//	$array_final['appointments'][$i]['date']['post'][$p]['post_id'] = $post['id'];
-								//$array_final['appointments'][$i]['date'][$date["date"]]['post'][$post['id']] = $date["date"];
-								$a = 0;
-								foreach ($array_appointments as $appointment) {
-									$array_patient_data = ApiQuery::getPatientBy("id", $appointment['id_patient']);
-									$appointment['patient_data'] = $array_patient_data;
-		
-									$array_final['dates'][$i]['post'][$p]['appointments'][$a] = $appointment;
-		
-									$a++;
-								}
-								$p++;
-							}
-							$i++;
-						}
-	
-					if ($print == 'json') {
-						echo json_encode($array_final, JSON_UNESCAPED_UNICODE);
-					} else {//modo "array"
-						return $array_final;
-					}
-				}
-			} //end if doctor HAS posts
-		} //end if emtpy second parameter
-
-	}
 
 	// AUTOCOMPLETE: This function is invoked when user is writing fields related to : Doctor's name, Clinics, Addresses and Doctor's Speciality
 	public function autocomplete($print = "json", $what="all", $string) {

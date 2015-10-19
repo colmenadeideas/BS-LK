@@ -21,8 +21,10 @@
 .board, .post {
 	cursor: pointer;
 	transition: all ease 0.2s;
+	margin-bottom: 25px;
 	/*background-color: #ffffff;*/
 }
+.post small { font-weight: bold;    color: #9EC7CE; }
 .board .image { box-shadow: 2px 2px 2px rgba(0,0,0,0.3); }
 .board .overtitle { background: #FFF; position: absolute; bottom: 0px;  margin-right: 15px; padding-bottom: 10px;}
 .board .topactions   { position: absolute; top: 0px; right: 0px; padding: 10px; margin-right: 15px;}
@@ -35,10 +37,10 @@
    padding: 0 !important;
    margin: 0 !important;
 }
-.modal-backdrop { height: 100%; }
+/*.modal-backdrop { height: 100%; }
+*/
 .popbox .modal-body { padding: 0 }
 .popbox .modal-content { border: none; box-shadow: none}
-
 
 
 .posts-list{
@@ -66,15 +68,18 @@
 		  width: 95px;
 		  height: 32px;*/
 		}
-		.botones .btn { border-radius:0; padding:15px 0;   border-color: #E8E8E8;   color: #939393;/*B3B3B3*/}
-		.editpart{ margin-top: 15px}
+		.buttons1 .btn {    border-color: #E8E8E8;   color: #939393;/*B3B3B3*/}
+		.btn.btn-action { transition:all ease 0.2s; background: #FFF; border-color: #E8E8E8; color: #A9A9A9; border-radius:0; padding:15px 0; }
+		.btn-action.btn:focus { background: #E8E8E8; color: #B3B3B3; box-shadow: none; outline: none !important }
+/*		.editpart{ margin-top: 15px}
 		.approve.btn { color : #FF5B5B; transition: 0.2s; }
 		.approve.btn:active, .approve.btn:focus { background:#4BC34B; color : #FFF}
 		.approve.btn:active, .approve.btn:focus { background:#FFF; color : #4BC34B}
 		.edit { }
 		.reject { color : #FF5B5B}
-
-
+*/
+.btn.liked { color: #FFFFFF !important; background: #FF63DF ; border-color:#FF63DF }
+.btn.liked:hover { background: #FF8D00}
 
 
 
