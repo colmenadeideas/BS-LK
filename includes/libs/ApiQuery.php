@@ -30,6 +30,9 @@
 				return DB::query("SELECT * FROM " . DB_PREFIX . "posts WHERE $param=%i", $id);
 			}			
 		}
+		public function getPost($id){
+			return DB::query("SELECT * FROM " . DB_PREFIX . "posts WHERE id=%i LIMIT 1", $id);
+		}
 		public function getComments($param, $id){
 			$param = escape_value($param);
 			return DB::query("SELECT * FROM " . DB_PREFIX . "comments WHERE $param=%i", $id);

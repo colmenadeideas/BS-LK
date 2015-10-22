@@ -128,6 +128,45 @@ class Api extends ApiQuery {
 
 	}
 
+	public function post($print = "json", $id) {
+		
+		$id = escape_value($id);
+		$array_posts = ApiQuery::getPost($id);	
+
+		//No Post Found
+		if (empty($array_posts)) {
+			$response["tag"] = "post";
+			$response["empty"] = 1;
+			$response["response"] = NO_PRACTICES_AVAILABLE;
+
+			Api::printResults($print, $response);
+
+		} else {
+			
+			$postFields = DB::columnList('posts');
+			$array_final["empty"] = 0;
+			
+			$post = $array_posts[0];
+
+			foreach ($postFields as $field) {
+				$array_final['post'][0][$field] = $post[$field];
+			}
+			$array_final['post'][0]['data'] = json_decode($post['data']);
+			$array_final['post'][0]['date'] = dateFormat($post['creationdate']);
+			//Get Post 'COMMENTS' on a parallel object
+			$comments = ApiQuery::getComments("post",$post['id']);
+			$i=0;
+			foreach ($comments as $comment) {
+				$array_final['post'][0]['comments'][$i] = $comment;
+				$user = Api::getUser($comment['user']);
+				$array_final['post'][0]['comments'][$i]['user'] = $user[0];
+				$i++;
+			}
+			Api::printResults($print, $array_final);
+		}
+
+	}
+
 	public function comments($print = "json", $parameter = "post", $id, $for_date="", $to_date="") {
 		
 		$id = escape_value($id);

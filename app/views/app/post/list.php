@@ -3,7 +3,7 @@
 	<script id="Post-Template" type="text/x-handlebars-template">
 		{{#each posts}}
 			<div class="post col-lg-4 col-md-4 col-sm-6 col-xs-12" id="post-{{id}}">
-				<div class="image col-sm-12" data-toggle="modal" data-target="#popDetailBox" data-post="{{id}}">
+				<div class="image col-sm-12" data-toggle="modal" data-target="#popDetailBox-{{id}}" data-post="{{id}}">
 					<img src="<?php echo IMAGES; ?>photo_default.jpg" class="img-responsive" alt="">
 				</div>
 				
@@ -44,10 +44,10 @@
 					</div>-->
 				</div>
 				<div class="editpart col-sm-12">
-					<div class="col-sm-4 row">
+					<div class="col-sm-4 col-md-4 row">
 						<small>{{date}}</small>
 					</div>
-					<div class="col-sm-8 text-right">
+					<div class="col-sm-8 col-md-8 text-right">
 						Descripcion y #hashtags
 						<textarea placeholder="presiona enter al finalizar" class="form-control comment" rows="3" style="display: none;"></textarea>
 					</div>
@@ -74,24 +74,45 @@
 		</div>
 	</div> -->
 	<!-- Modal -->
-    <div class="modal fade popbox" id="popDetailBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" backdrop="true">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content">
-	      <div class="modal-body">
-	        
-	        <div class="image-box col-lg-6 col-md-6 nopadding">
-				<img src="" alt="" class="popbox-img img-responsive">
+	<script id="Modal-Template" type="text/x-handlebars-template">
+		{{#each post}} 
+			<div class="modal popbox" id="popDetailBox-{{id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" backdrop="true">
+			  <div class="modal-dialog modal-lg" role="document">
+			    <div class="modal-content">
+			      <div class="modal-body">
+			        
+			        <div class="image-box col-lg-6 col-md-6 col-sm-6 nopadding">
+						<img src="<?php echo IMAGES; ?>photo_default.jpg" alt="" class="popbox-img img-responsive">
+					</div>
+					<div class="info-box col-lg-6 col-md-6 col-sm-6 nopadding">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        	{{> commentsPartial}}
+					</div>
+						
+			      </div>
+			      <div class="modal-footer"></div>
+			    </div>
+			  </div>
 			</div>
-			<div class="info-box col-lg-6 col-md-6 nopadding">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        
-		       
-			</div>
-				
-	      </div>
-	      <div class="modal-footer"></div>
-	    </div>
-	  </div>
-	</div>
+		{{/each}}
+	</script>
+	<script id="Comments-Template" type="text/x-handlebars-template">
+		<ul>
+		{{#each comments}} 
+			<a href="#">
+				<li>
+				<div class="users-face">
+					<img src="http://localhost/BS-LK/html/public/images/photo_default.jpg" class="img-responsive" alt="{{user.username}}">
+				</div> {{user.username}}:
+				</li>
+			</a>
+			<span class="comment-text">
+			{{data}}
+			</span>
+		{{/each}}
+		</ul>
+	</script>
+    
 
+	
 </div>

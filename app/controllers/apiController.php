@@ -26,6 +26,9 @@
 		public function posts($print="json", $from = "from", $who){
 			Api::posts($print, $from, $who);
 		}
+		public function post($print="json", $id){
+			Api::post($print, $id);
+		}
 		public function comments ($print="json", $from = "post", $id){
 			Api::comments($print,$from,$id);
 		}

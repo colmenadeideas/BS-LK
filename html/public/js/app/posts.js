@@ -11,34 +11,26 @@ define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 	
 		$('.post .image, .post .comment-action').click( function(){
 			var postId 	 = $(this).data('post');
-			var imageSrc = $("#post-"+postId+ " .image").children('img').attr('src'); 
-			//var imageSrc = $(this).children('img').attr('src');
-			//var post 	 = $(this).parent('.post');
-			//var id 		 = post.attr('id');
 			
-			console.log(' '+imageSrc);
+			var Modal = $("#popDetailBox-"+postId);
+			var findPrevious = $('.all-posts').find(Modal);
 			
-			$('.image-box img').attr('src', imageSrc);
+			if (findPrevious.length > 0) {
+				$("#popDetailBox-"+postId).modal('show');
 
-			/*
-			var title = this_post.find('h2').html();
-			
-			$('.lightbox').attr('id', id);  //Te light box will have the same id from the current image
-			$('.lightbox').fadeIn(500);
-			$.ajax({
-				url: '..includes/',
-				dataType: 'json',
-				success: function(json) {
-					$.each(json, function(key, value) {
-						$('.comments').append("<li>"+value.comment+"</li>")
-					});
-				}
-			});*/
-			$.getJSON(URL+"api/comments/json/post/"+postId, function(data) {
-				//var TemplateScript = $("#Board-Template").html(); 
-		        //var Template = Handlebars.compile(TemplateScript);
-				//$(".all-boards").append(Template(data)); 
-			});
+			} else {
+				//Load Data
+				$.getJSON(URL+"api/post/json/"+postId, function(data) {
+					var TemplateScript = $("#Modal-Template").html(); 
+			        var Template = Handlebars.compile(TemplateScript);
+			        Handlebars.registerPartial("commentsPartial", $("#Comments-Template").html());
+
+			        $(".all-posts").append(Template(data)); 
+					
+					$("#popDetailBox-"+postId).modal('show');	
+				});
+			}
+
 		});
 
 	}

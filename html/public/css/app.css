@@ -42,6 +42,11 @@
 .popbox .modal-body { padding: 0 }
 .popbox .modal-content { border: none; box-shadow: none}
 
+.comments-text { 
+	margin-bottom: 7px;
+    position: relative;
+    word-wrap: break-word;
+}
 
 .posts-list{
 			list-style:none;
