@@ -5,7 +5,7 @@
 
 
 			<div class="logohome"> <img src="<?php echo IMG; ?>likes-home-logo.png" title="<3 LIKES" alt="likes"  /> </div>
-			<form id="form-login" class="form-inline login text-center">
+			<form id="form-login" method="post" class="form-inline login text-center">
 				<div class="form-group welcome">
 					<p>¡Bienvenido!</p>						
 				</div>

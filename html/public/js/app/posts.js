@@ -1,4 +1,4 @@
-define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
+define(['globals', 'assets/handlebars.min', 'assets/bootstrap-editable.min'], function(globals, Handlebars, Editable ) {
 	
 	function add() {
 		//var step;		
@@ -20,13 +20,14 @@ define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 
 			} else {
 				//Load Data
-				$.getJSON(URL+"api/post/json/"+postId, function(data) {
+				$.getJSON(globals.URL+"api/post/json/"+postId, function(data) {
 					var TemplateScript = $("#Modal-Template").html(); 
 			        var Template = Handlebars.compile(TemplateScript);
 			        Handlebars.registerPartial("commentsPartial", $("#Comments-Template").html());
+			        Handlebars.registerPartial("commentPartial", $("#SingleComment-Template").html());
 
 			        $(".all-posts").append(Template(data)); 
-					
+					commentsValidate();
 					$("#popDetailBox-"+postId).modal('show');	
 				});
 			}
@@ -34,13 +35,49 @@ define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 		});
 
 	}
-	
+	function commentsValidate(){
+		$('.comment-submit').on('click', function(e) {
+			form 	= $(this).parent().parent("form");
+			postId 	= $(form).data("post");
+			//asz q	-=0console.log(form);
+			$(form).validate({
+				submitHandler : function(form) {
+					$(this).closest('.send').attr('disabled', 'disabled');				
+					$.ajax({
+						type : "POST",
+						url : globals.URL + "comments/add/"+postId,
+						data : $(form).serialize(),
+						timeout : 12000,
+						success : function(response) {
+							var response = JSON.parse(response);
+							//var response = JSON.stringify(response);
+							console.log(response.post[0].comments[0]);		
+							$(this).closest('.send').removeAttr("disabled");
 
-	function progressbar(){
-		// Defining variables
-		var step = $('.step').attr('step');
-		$(".progressbar li:nth-child("+step+")").attr('class','active');
+							var NewComment = $('#SingleComment-Template').html();
+					        var Template = Handlebars.compile(NewComment);
+					        $("#commentsList").append(Template(response.post[0].comments[0]));
+					        $('[name="text"]').val("");
+					        /*
+					        var TemplateScript = $("#Modal-Template").html(); 
+					        var Template = Handlebars.compile(TemplateScript);
+					        Handlebars.registerPartial("commentsPartial", $("#Comments-Template").html());
+
+					        $(".all-posts").append(Template(data)); 
+							*/
+
+						},
+						error : function(obj, errorText, exception) {
+							console.log(errorText);
+						}
+					});
+					return false;
+				}
+			});
+			//e.preventDefault();
+		});
 	}
+	
 
 	return {
 		add: add,

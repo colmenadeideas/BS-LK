@@ -47,6 +47,9 @@
     position: relative;
     word-wrap: break-word;
 }
+.comment-input input { min-width: 285px; margin-left:5px;}
+.comment-input { color:#666666;}
+.commment-input .btn {background: #FFF; color:#444444;}
 
 .posts-list{
 			list-style:none;

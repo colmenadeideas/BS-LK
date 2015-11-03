@@ -1,6 +1,7 @@
 <div class="all-posts page">
 	
 	<script id="Post-Template" type="text/x-handlebars-template">
+	{{#if posts.length}}
 		{{#each posts}}
 			<div class="post col-lg-4 col-md-4 col-sm-6 col-xs-12" id="post-{{id}}">
 				<div class="image col-sm-12" data-toggle="modal" data-target="#popDetailBox-{{id}}" data-post="{{id}}">
@@ -55,24 +56,13 @@
 				
 			</div>
 	  	{{/each}}
+	{{else}}
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-posts" id="no-post">
+				<a href="#addto/{{parent}}">Crear un post</a>
+		</div>
+	{{/if}}
 	</script>	
 	
-	<!--Lightbox-->
-	<!-- <div id="" class="lightbox">
-		<div class="x">X</div>
-		<div class="vertical" >
-			<div class="inner-lightbox">
-				<div class="image-box">
-					<img src="" alt="" class="lightbox-img">      
-				</div>
-				<h3></h3>
-				<ul class="comments"></ul>
-				<div>
-					<input class="lblanc" type="text">
-				</div>
-			</div>
-		</div>
-	</div> -->
 	<!-- Modal -->
 	<script id="Modal-Template" type="text/x-handlebars-template">
 		{{#each post}} 
@@ -97,8 +87,22 @@
 		{{/each}}
 	</script>
 	<script id="Comments-Template" type="text/x-handlebars-template">
-		<ul>
+		<ul class="col-lg-12" id="commentsList">
 		{{#each comments}} 
+			{{> commentPartial}}
+		{{/each}}
+		</ul>
+		<form id="add-comment" method="post" class="form-inline comment-input" data-post="{{id}}">
+			<div class="col-lg-12 form-group">	
+				<i class="fa fa-commenting-o fa-2x"></i>
+				<input type="text" name="text" class="form-control input-lg" 
+				placeholder="Comenta algo..!">
+				<button type="submit" class="btn btn-default btn-lg send comment-submit">Enviar</button>					
+			</div>				
+		</form>	
+	</script>
+    
+	<script id="SingleComment-Template" type="text/x-handlebars-template">
 			<a href="#">
 				<li>
 				<div class="users-face">
@@ -107,12 +111,10 @@
 				</li>
 			</a>
 			<span class="comment-text">
-			{{data}}
+				{{data.text}}
 			</span>
-		{{/each}}
-		</ul>
+		
 	</script>
-    
 
 	
 </div>

@@ -37,7 +37,9 @@
 			$param = escape_value($param);
 			return DB::query("SELECT * FROM " . DB_PREFIX . "comments WHERE $param=%i", $id);
 		}
-
+		public function getComment($id){
+			return DB::query("SELECT * FROM " . DB_PREFIX . "comments WHERE id=%i LIMIT 1", $id);
+		}
 		public function getUser($id){
 			//TODO test with real data. SHould we get 'users' or 'users_profile'
 			return DB::query("SELECT * FROM " . DB_PREFIX . "users_profile WHERE id=%i", $id);

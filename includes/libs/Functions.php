@@ -51,14 +51,23 @@
 		return $valid;
 	}
 	
-	function stringDate($date)
-	{	if (required($date)){
+	function stringDate($date){
+		if (required($date)){
 	    	$d = DateTime::createFromFormat('Y-m-d', $date);
 	    	return $d && $d->format('Y-m-d') == $date;
 		}else{
 			return false;
 		 }
 	}
+	
+	function buildMention($data){
+		if (preg_match_all('!@(.+)(?:\s|$)!U', $data, $matches)){
+		    $usernames = $matches[1];
+		} else {
+		    $usernames = array();
+		}
+	}
+
 
 	/*
 	 * Builds array with Hours Range

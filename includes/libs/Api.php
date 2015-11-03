@@ -42,7 +42,7 @@ class Api extends ApiQuery {
 
 				$boards = Api::getBoards("relationship", $relationship['id']);
 				$array_final["boards"][$i] = $boards[0];
-				$array_final["boards"][$i]['data'] = json_decode($boards[0]['data']);
+				$array_final["boards"][$i]['data'] = json_decode($boards[0]['data'], TRUE);
 
 				//Users
 				$users = json_decode($relationship['users'], TRUE);
@@ -81,7 +81,8 @@ class Api extends ApiQuery {
 		if (empty($array_posts)) {
 			$response["tag"] = "posts";
 			$response["empty"] = 1;
-			$response["response"] = NO_PRACTICES_AVAILABLE;
+			$response["response"] = "No hay posts";
+			$response["parent"] = $id;
 
 			Api::printResults($print, $response);
 
@@ -95,7 +96,7 @@ class Api extends ApiQuery {
 				foreach ($postFields as $field) {
 					$array_final['posts'][$i][$field] = $post[$field];
 				}
-				$array_final['posts'][$i]['data'] = json_decode($post['data']);
+				$array_final['posts'][$i]['data'] = json_decode($post['data'], TRUE);
 				$array_final['posts'][$i]['date'] = dateFormat($post['creationdate']);
 				
 			
@@ -158,6 +159,7 @@ class Api extends ApiQuery {
 			$i=0;
 			foreach ($comments as $comment) {
 				$array_final['post'][0]['comments'][$i] = $comment;
+				$array_final['post'][0]['comments'][$i]['data'] = json_decode($comment['data'], TRUE);
 				$user = Api::getUser($comment['user']);
 				$array_final['post'][0]['comments'][$i]['user'] = $user[0];
 				$i++;
@@ -200,6 +202,42 @@ class Api extends ApiQuery {
 				//$array_final['comments'][$i]['data'] = json_decode($comment['data']);
 				$user = Api::getUser($comment['user']);
 				$array_final['comments'][$i]['user'] = $user[0];
+
+				$i++;
+			}
+			
+			Api::printResults($print, $array_final);
+		}
+
+	}
+	public function comment($print = "json", $id) {
+		
+		$id = escape_value($id);
+		
+		$array_comment = ApiQuery::getComment($id);	
+		if (empty($array_comment)) {
+			$response["tag"] = "comments";
+			$response["empty"] = 1;
+			$response["response"] = "El comentario no existe o ha sido eliminado";
+
+			Api::printResults($print, $response);
+
+		} else {
+			
+			$commentFields = DB::columnList('comments');
+			$i = 0;
+			$array_final["empty"] = 0;
+			
+			foreach ($array_comment as $comment) {
+				foreach ($commentFields as $field) {
+					if ($field == 'data'){
+						$array_final['post'][0]['comments'][$i][$field] = json_decode($comment[$field], TRUE);
+					} else {
+						$array_final['post'][0]['comments'][$i][$field] = $comment[$field];
+					}
+				}
+				$user = Api::getUser($comment['user']);
+				$array_final['post'][0]['comments'][$i]['user'] = $user[0];
 
 				$i++;
 			}

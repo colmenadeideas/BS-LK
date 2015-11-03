@@ -32,6 +32,9 @@
 		public function comments ($print="json", $from = "post", $id){
 			Api::comments($print,$from,$id);
 		}
+		public function comment ($print="json", $id){
+			Api::comment($print,$id);
+		}
 				
 	}
 ?>

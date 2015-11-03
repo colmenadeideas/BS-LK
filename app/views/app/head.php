@@ -14,6 +14,7 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>	-->
 	
 	<link href="<?php echo CSS; ?>bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo CSS; ?>bootstrap-editable.css" rel="stylesheet">
 	<link href="<?php echo CSS; ?>font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo CSS; ?>localfonts.css" rel="stylesheet">
 	<link href="<?php echo CSS; ?>styles.css" rel="stylesheet">

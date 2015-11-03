@@ -28,8 +28,16 @@
 
 
 		public function posts($action,$id){
-
-			$this->view->render("app/post/list"); // buildpage
+			switch ($action) {
+				case 'addto':
+					$this->view->render("app/post/add");
+					break;
+				
+				default: // "board"
+					$this->view->render("app/post/list"); // buildpage
+					break;
+			}
 		}
+
 	}
 ?>
