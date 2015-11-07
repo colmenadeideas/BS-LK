@@ -1,6 +1,7 @@
 <div class="all-boards page">
 	
 	<script id="Board-Template" type="text/x-handlebars-template">
+	{{#if boards.length}}
 		{{#each boards}}
 			
 				<div class="board col-lg-4 col-md-4 col-sm-6 col-xs-12" id="board-{{id}}">
@@ -28,6 +29,9 @@
 				</div>
 				
 	  	{{/each}}
+	{{else}}
+		<?php $this -> render('app/board/empty'); ?>
+	{{/if}}
 	</script>	
 	
 

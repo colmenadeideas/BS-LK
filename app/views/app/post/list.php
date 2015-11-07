@@ -57,9 +57,7 @@
 			</div>
 	  	{{/each}}
 	{{else}}
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-posts" id="no-post">
-				<a href="#addto/{{parent}}">Crear un post</a>
-		</div>
+		<?php $this -> render('app/post/empty'); ?>
 	{{/if}}
 	</script>	
 	
