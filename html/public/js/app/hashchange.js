@@ -6,8 +6,10 @@ define(function() {
 
 	$(window).bind('hashchange', function () {
 		var url = $.param.fragment();
+
 		// Hide any visible ajax content.
-		$('#desktop').children(':visible').hide();		
+		$('#desktop').children(':visible').hide();	
+
 		if (cache[url]) {
 			cache[url].show();			
 			//Prevent desktop to usea .load() method
@@ -33,26 +35,31 @@ define(function() {
 							app.boards();
 						});						
 						break;
+
 					case "posts":
-						require(['app/app'], function(app) {
-							app.posts(active_page[1],active_page[2]);
-						/*	switch(active_page[2]) {
-								case 'boards':	
-									appointments.autocomplete();	
-									appointments.calendar();								
-									break;
-								default:
-									appointments.list();
-									break;
-							}*/																					
-						});						
+						switch (active_page[1]){
+							case 'addto':
+								require(['app/posts'], function(posts) {
+									posts.add(active_page[2]);
+								});	
+								break;
+							/*case 'edit':
+								console.log("EDIT");
+								break;*/
+							default:
+								require(['app/app'], function(app) {
+									if(active_page[3] == 'modal'){
+										app.posts(active_page[1],active_page[2],active_page[3],active_page[4]);
+									} else {
+										app.posts(active_page[1],active_page[2]);
+									}
+								});	
+							
+							break;
+						}
+											
 						break;
 					
-					/*default:
-						require(['app/app'], function(app) {
-							app.boards();																					
-						});				
-						break;*/
 				}
 				$('#preloader').fadeOut();
 			});

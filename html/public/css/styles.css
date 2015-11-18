@@ -40,7 +40,7 @@ body {
 .head { height: 100px; background: #1A90E5;position: fixed;
     top: 0;left:0;right:0;
     height: 100px !important;
-    
+    z-index: 99;
     padding: 20px 40px;
     color: #fff;
 }

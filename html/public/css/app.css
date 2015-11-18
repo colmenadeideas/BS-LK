@@ -14,8 +14,9 @@ body { background: #FFF}
 #desktop {
 	background:#FFF; height: 100%;
 	margin-top: 100px;
-	position: fixed; right: 0; top:0;
+/*	position: fixed; right: 0; top:0;*/
 	padding-top: 50px;
+	margin-left:150px 
 }
 .board:hover { padding-top: 5px; }
 .board, .post {
@@ -71,7 +72,50 @@ span.btn-action 		{ padding: 15px 20px 13px;}
 span.btn-action:hover 	{ padding: 20px 27px 20px;}
 .btn-add { background-color: #51C753; }
 
+.droparea { border: dashed 3px #CCC; border-radius:20px;transition: border-color ease 0.5s; }
+.droparea:hover { border-color: #2AB3FF }
+.btn-upload {
+    background-color: #FFF;
+    border-color: #FFF;
+    color: #666;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.3);
+}
+.add-area { position: fixed; bottom: 0; right: 0; padding: 20px; z-index: 99 }
+.btn-add { transition: all ease 0.3s; background: #0044CC; height: 70px; width: 70px; border-radius: 35px; font-size: 40px; padding: 7px 10px 0 0;}
+a.btn-add, a.btn-add:hover{ color:#FFF }
+.btn-add span { transition: all ease 0.3s; margin-left: -75px; font-size: 20px; padding-right: 0px; color: #333; opacity: 0 }
+.btn-add:hover span { opacity: 1; margin-left: -100px; padding-right: 25px; }
+.fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+     direction: ltr; 
+    cursor: pointer;
+}
 
+#conversion, #processing {
+	display: none;
+	position: fixed;
+	top: 25%;
+	border: solid 1px #999;
+	border-radius: 20px;
+	padding: 45px;
+	left: 30%;
+	width: 40%;
+	height: 300px;
+	z-index: 1050;
+	background: rgba(255,255,255,0.9);
+	box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+	font-size: 140%;
+	line-height: 140%;
+}
+#processing { height: 250px;background:#FFF }
+#conversion .spinner, #processing .spinner, .waiting_messages .spinner { top: 0; }
+.
 
 
 .nopadding {
@@ -93,7 +137,7 @@ span.btn-action:hover 	{ padding: 20px 27px 20px;}
 .comment-input { color:#666666;}
 .commment-input .btn {background: #FFF; color:#444444;}
 
-.no-posts img, .no-boards img { margin: 10px auto; }
+.no-posts img, .no-boards img, .centered-div img { margin: 10px auto; }
 
 .posts-list{
 			list-style:none;

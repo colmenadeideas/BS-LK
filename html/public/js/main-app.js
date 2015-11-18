@@ -2,9 +2,26 @@ require.config({
     baseUrl: "http://localhost/BS-LK/html/public/js",
     requireDefine:true,
     waitSeconds:12,
+    //Include the FileUpload as a package, so it can load all its own dependencies
+    packages: [
+        {
+            name: "jquery.fileupload",
+            location:"assets/fileupload/",
+            main: "jquery.fileupload-ui"
+        }
+    ],
     paths: {
       jquery:[  'assets/jquery.min', '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min'],
       'async': 'assets/requirejs-plugins/async',          
+    
+      //File uploader external dependencies...
+      'jquery.ui.widget':'assets/fileupload/jquery.ui.widget',        
+      'tmpl':'assets/fileupload/external/jquery.tmpl.min',
+      'load-image':'assets/fileupload/external/load-image',
+      'load-image-ios':'assets/fileupload/external/load-image-ios',        
+      'load-image-exif':'fileuploader/external/load-image-exif',
+      'load-image-meta':'assets/fileupload/external/load-image-meta',
+      'canvas-to-blob':'assets/fileupload/external/canvas-to-blob.min'
     },  
 
     shim: {
@@ -42,8 +59,9 @@ require.config({
         'assets/jquery.validate.min','assets/jquery.easing.min',
         'assets/bootstrap-editable.min','assets/jquery.scrollTo.min','assets/bootstrap-datetimepicker-v4','assets/jquery.geocomplete.min','assets/moment.min','assets/fullcalendar.min','assets/jsonsql','functions','config'],
         'app/search': ['jquery','common', 'globals'],
-        'app/doctor': ['jquery','common', 'globals','app/search','assets/jquery.easing.min', 'assets/jquery.carouFredSel-6.1.0-packed'],
-        'app/app': ['jquery','common', 'globals','assets/jquery.validate.min', 'app/posts'],
+        'app/boards': ['jquery','common', 'globals'],
+        'app/posts': ['jquery','common', 'globals','app/search','assets/jquery.easing.min', 'assets/fileupload/jquery.fileupload'],
+        'app/app': ['jquery','common', 'globals','assets/jquery.validate.min', 'app/posts', 'assets/fileupload/jquery.fileupload'],
         'app/login': ['jquery','globals','assets/jquery.validate.min'],
         'app/site':  ['globals', 'app/login'],
         'app/hashchange': ['common', 'assets/handlebars.min', 'app/site', 'app/login'],
@@ -59,30 +77,42 @@ require([
 
       var accessArray = window.location.pathname.split('/');
       var accessHash = $.param.fragment();
-      
+      var accessHashPart = accessHash.split('/');
+
+      //if(accessArray.slice(-1) != "/"){ accessArray = accessArray+"/" }
+
       console.log("Access:" + accessArray +" Hash:" + accessHash);
-      
-      switch(accessArray[3]) {
+
+      /*switch(accessArray[3]) {
         case "app":         
-          /*require(['app/app'], function(app) {              
-              switch(accessHash) {
+          require(['app/app'], function(App) {              
+              switch(accessHashPart[0]) {
                 case 'posts':
-                  app.posts();
+
+                  switch(accessHashPart[3]){
+                    case 'modal':
+                      App.posts(accessHashPart[1],accessHashPart[2],accessHashPart[3],accessHashPart[4]);
+                       
+                      break;
+                    default:
+                      App.posts(accessHashPart[1], accessHashPart[2]);
+                      break;
+                  }
                   break;
                 default: 
-                  app.boards();                   
+                  App.boards();                   
                   break;
               }                      
-          }); */
+          }); 
           break;
 
-        default: // CASE "SITE"
-          require(['app/site', 'app/login'], function(site,login) {              
+        default: // CASE "  SITE"
+          require(['app/site', 'app/login'], function(Site,Login) {              
               //site.run();  
-              login.run();
+              Login.run();
             }); 
           break;
-      } 
+      } */
 
     }
 );

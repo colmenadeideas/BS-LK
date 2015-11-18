@@ -26,6 +26,10 @@
 	define ( 'MAIL_PASSWORD', 'Ker$wr543');  //TODO CHANGE
 	define ('MAIL_SECURE','ssl');
 	
+	define ('CLIENTS_FOLDER', SITE_PATH.'../html/files/');
+	define ('CLIENTS_FOLDER_UPLOADED', URL.'files/');
+
+	
 	//define('GOOGLE_APIKEY', 'AIzaSyCZrOa5K7mow_tX5KP253wPifIs7qQ4y3k');
 	//define('FACEBOOK_APP_ID','1545942492291033'); //App ID
 	//define('FACEBOOK_APP_SECRET','8ddb38447c288996c5efe5e03c6dbcfa');

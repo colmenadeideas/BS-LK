@@ -7,7 +7,7 @@
 		</div>
 	</form> -->
 	<ul class="leftbuttons">
-		<a href="#">
+		<a href="#posts/addto/">
 		<li>
 			
 				<div class="top btn-upload">
@@ -26,7 +26,7 @@
 				<div class="text">Change Boards</div>
 			</li>
 		</a>
-		<a href="#boards">
+		<a href="#posts/likes">
 			<li>
 				
 				<div class="top btn-likes">
@@ -35,7 +35,7 @@
 				<div class="text">Pending Likes</div>
 			</li>
 		</a>
-		<a href="#boards">
+		<a href="#relationships">
 			<li>
 				
 				<div class="top btn-relationships">

@@ -6,6 +6,7 @@
 			
 			$this->view = new View();
 			$this->helper = new Helper();
+			$this->fileuploader = new Fileuploader();
 			$this->email = new Email();
 			$this->user = new User();		
 			$this->api = new Api();

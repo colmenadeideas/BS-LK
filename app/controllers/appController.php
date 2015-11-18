@@ -15,7 +15,7 @@
 		public function index() {
 			$this->view->render("app/head");
 			$this->view->render("app/nav");
-			$this->view->render("app/board/list"); // buildpage
+			//$this->view->render("app/board/list"); // buildpage
 			$this->view->render("app/footer");
 		}
 
@@ -27,16 +27,33 @@
 		}
 
 
-		public function posts($action,$id){
+		public function posts($action,$id, $modal ="", $modal_id =""){
 			switch ($action) {
 				case 'addto':
-					$this->view->render("app/post/add");
+					if ($id == ""){
+						$this->view->render("app/post/add-choose");
+					} else {
+						$this->view->render("app/post/add");
+					}
+					break;
+
+				//With Open Modal
+				case 'board':
+					$this->view->render("app/post/list"); // buildpage
 					break;
 				
 				default: // "board"
 					$this->view->render("app/post/list"); // buildpage
 					break;
 			}
+		}
+		public function relationships($action="add"){
+			switch ($action) {
+				case 'add':
+					$this->view->render("app/relationship/list"); // buildpage
+					break;
+			}
+
 		}
 
 	}

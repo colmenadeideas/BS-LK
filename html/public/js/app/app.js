@@ -1,158 +1,36 @@
-define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Handlebars, posts) {
+define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Handlebars, Posts) {
 	
-	/*// This function is called only once - on page load.
-	// It fills up the posts list via a handlebars template.
-	// It recieves one parameter - the data we took from posts.json.
-	function generateAllPostsHTML(data){
-
-		var list = $('.all-posts');
-
-
-			var TemplateScript = $("Post-Template").html(); 
-	        var Template = Handlebars.compile(TemplateScript);
-	         
-		    $(".all-posts").append (Template(data)); 
-
-		var theTemplateScript = $("#Post-Template").html();
-		//Compile the template​
-		var theTemplate = Handlebars.compile (theTemplateScript);
-		list.append (theTemplate(data));
-
-
-		// Each posts has a data-index attribute.
-		// On click change the url hash to open up a preview for this post only.
-		// Remember: every hashchange triggers the render function.
-		list.find('li').on('click', function (e) {
-			e.preventDefault();
-
-			var postIndex = $(this).data('index');
-
-			window.location.hash = 'post/' + postIndex;
-		})
-	}*/
-
 	function boards() {
 
 		window.location.hash = '#boards'; //for binding to back state TODO could add to url params for refreshing maybe
 		
 		$.getJSON(URL+"api/boards/json/from/1", function(data) {
 		
-			/*boards = data.boards;
-			console.log(boards);
-*/
 			var TemplateScript = $("#Board-Template").html(); 
 	        var Template = Handlebars.compile(TemplateScript);
 
 			$(".all-boards").append(Template(data)); 
 		});
 	}
-	function posts(from,value) {
-
-		window.location.hash = '#posts/'+from+'/'+value; //for binding to back state TODO could add to url params for refreshing maybe
-		console.log(from);
-
-
-
-
+	function posts(from,value,modalMode,modalValue) {
+		//console.log(from);
 		$.getJSON(URL+"api/posts/json/board/"+"/"+value, function(data) {
-			
-			posts = data;
-
 			var TemplateScript = $("#Post-Template").html(); 
 	        var Template = Handlebars.compile(TemplateScript);
-
 			$(".all-posts").append(Template(data)); 
 
-			require(['app/posts'], function(posts) {
-				posts.run();
-			});
-
-
+			Posts.run();
 		});
 
+		if (modalMode == 'modal') {
+//			console.log("has Modal "+modalValue);
+			//Show Modal
+           	Posts.edit(modalValue); 			
+			window.location.hash = '#posts/'+from+'/'+value+'/'+modalMode+'/'+modalValue;
+		} else {
+			window.location.hash = '#posts/'+from+'/'+value; //for binding to back state TODO could add to url params for refreshing maybe
+		}
 		
-		/*// Get data about our posts from posts.json.
-		$.getJSON( "public/posts.json", function( data ) {
-			posts = data;
-			generateAllPostsHTML(posts);
-			// Manually trigger a hashchange to start the app.
-			$(window).trigger('hashchange');
-		});*/
-
-		// Globals variables
-		// 	An array containing objects with information about the posts.
-		/*var posts = [],	
-		filters = {};
-		var checkboxes = $('.all-posts input[type=checkbox]');
-
-		console.log(checkboxes);
-
-		checkboxes.click(function () {
-
-			var that = $(this),
-			specName = that.attr('name');
-
-			// When a checkbox is checked we need to write that in the filters object;
-			if(that.is(":checked")) {
-
-				// If the filter for this specification isn't created yet - do it.
-				if(!(filters[specName] && filters[specName].length)){
-					filters[specName] = [];
-				}
-
-				//	Push values into the chosen filter array
-				filters[specName].push(that.val());
-
-				// Change the url hash;
-				createQueryHash(filters);
-
-			}
-
-			// When a checkbox is unchecked we need to remove its value from the filters object.
-			if(!that.is(":checked")) {
-
-				if(filters[specName] && filters[specName].length && (filters[specName].indexOf(that.val()) != -1)){
-
-					// Find the checkbox value in the corresponding array inside the filters object.
-					var index = filters[specName].indexOf(that.val());
-
-					// Remove it.
-					filters[specName].splice(index, 1);
-
-					// If it was the last remaining value for this specification,
-					// delete the whole array.
-					if(!filters[specName].length){
-						delete filters[specName];
-					}
-
-				}
-
-				// Change the url hash;
-				createQueryHash(filters);
-			}
-		});
-
-		var singlePostPage = $('.single-post');
-
-		singlePostPage.on('click', function (e) {
-
-			if (singlePostPage.hasClass('visible')) {
-
-				var clicked = $(e.target);
-
-				// If the close button or the background are clicked go to the previous page.
-				if (clicked.hasClass('close') || clicked.hasClass('overlay')) {
-					// Change the url hash with the last used filters.
-					createQueryHash(filters);
-				}
-
-			}
-
-		});*/
-
-		
-		
-
 	}
 	/*
 
@@ -302,6 +180,9 @@ define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Hand
 		}
 
 	}*/
+	function relationships(){
+
+	}
 
 
 	return {
