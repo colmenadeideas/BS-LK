@@ -19,11 +19,15 @@
 			$this->view->render("app/footer");
 		}
 
-		public function boards() {
-			//$this->view->userdata = $this->user->getUserdata();	
-			
-			$this->view->render("app/board/list"); // buildpage
-			
+		public function boards($action) {
+			switch ($action) {
+				case 'add':
+					$this->view->render("app/board/add");
+					break;				
+				default:
+					$this->view->render("app/board/list");
+					break;
+			}
 		}
 
 
@@ -50,7 +54,7 @@
 		public function relationships($action="add"){
 			switch ($action) {
 				case 'add':
-					$this->view->render("app/relationship/list"); // buildpage
+					$this->view->render("app/relationship/empty"); // buildpage
 					break;
 			}
 

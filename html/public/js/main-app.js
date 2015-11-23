@@ -1,7 +1,7 @@
 require.config({
     baseUrl: "http://localhost/BS-LK/html/public/js",
     requireDefine:true,
-    waitSeconds:12,
+    waitSeconds:200,
     //Include the FileUpload as a package, so it can load all its own dependencies
     packages: [
         {
@@ -61,7 +61,7 @@ require.config({
         'app/search': ['jquery','common', 'globals'],
         'app/boards': ['jquery','common', 'globals'],
         'app/posts': ['jquery','common', 'globals','app/search','assets/jquery.easing.min', 'assets/fileupload/jquery.fileupload'],
-        'app/app': ['jquery','common', 'globals','assets/jquery.validate.min', 'app/posts', 'assets/fileupload/jquery.fileupload'],
+        'app/app': ['jquery','common', 'globals','assets/jquery.validate.min', 'app/posts'],
         'app/login': ['jquery','globals','assets/jquery.validate.min'],
         'app/site':  ['globals', 'app/login'],
         'app/hashchange': ['common', 'assets/handlebars.min', 'app/site', 'app/login'],
@@ -82,7 +82,7 @@ require([
       //if(accessArray.slice(-1) != "/"){ accessArray = accessArray+"/" }
 
       console.log("Access:" + accessArray +" Hash:" + accessHash);
-
+            
       /*switch(accessArray[3]) {
         case "app":         
           require(['app/app'], function(App) {              

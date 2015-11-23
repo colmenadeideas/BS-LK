@@ -31,27 +31,37 @@ define(function() {
 				console.log(active_page[0]);
 				switch(active_page[0]) {
 					case "boards":
-						require(['app/app'], function(app) {
-							app.boards();
-						});						
+						switch (active_page[1]){
+							case "add":
+								require(['app/boards'], function(Boards) {
+									Boards.add();
+								});	
+							break;
+							
+							default:
+								require(['app/appe'], function(App) {
+									App.boards();
+								});				
+							break;
+						}
 						break;
 
 					case "posts":
 						switch (active_page[1]){
 							case 'addto':
-								require(['app/posts'], function(posts) {
-									posts.add(active_page[2]);
+								require(['app/posts'], function(Posts) {
+									Posts.add(active_page[2]);
 								});	
 								break;
 							/*case 'edit':
 								console.log("EDIT");
 								break;*/
 							default:
-								require(['app/app'], function(app) {
+								require(['app/appe'], function(App) {
 									if(active_page[3] == 'modal'){
-										app.posts(active_page[1],active_page[2],active_page[3],active_page[4]);
+										App.posts(active_page[1],active_page[2],active_page[3],active_page[4]);
 									} else {
-										app.posts(active_page[1],active_page[2]);
+										App.posts(active_page[1],active_page[2]);
 									}
 								});	
 							

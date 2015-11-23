@@ -18,8 +18,14 @@ body { background: #FFF}
 	padding-top: 50px;
 	margin-left:150px 
 }
-.board:hover { padding-top: 5px; }
-.board, .post {
+
+.board-choose .button { border: solid 3px #BD45FE; /*E0A8FF*/  padding-top: 10px; 
+	height: 65px;    border-radius: 35px; box-shadow: 2px 2px 2px rgba(0,0,0,0.2);  }
+.board-choose .lastpost,.board-choose .infopost {   float: left}
+.board-choose .lastpost { height:40px; width: 40px; border-radius: 25px; background-size: cover; float: left }
+.board-choose .infopost { margin: -10px 5px 0 5px;}
+.board:hover, .board-choose:hover { padding-top: 5px; }
+.board, .post, .board-choose {
 	cursor: pointer;
 	transition: all ease 0.2s;
 	margin-bottom: 25px;

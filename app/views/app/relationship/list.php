@@ -1,1 +1,1 @@
-list.php
+Crear equipos

@@ -1,8 +1,8 @@
 define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Handlebars, Posts) {
 	
 	function boards() {
-
-		window.location.hash = '#boards'; //for binding to back state TODO could add to url params for refreshing maybe
+		console.log("Board-Template");
+		/*window.location.hash = '#boards'; //for binding to back state TODO could add to url params for refreshing maybe
 		
 		$.getJSON(URL+"api/boards/json/from/1", function(data) {
 		
@@ -10,7 +10,8 @@ define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Hand
 	        var Template = Handlebars.compile(TemplateScript);
 
 			$(".all-boards").append(Template(data)); 
-		});
+		});*/
+
 	}
 	function posts(from,value,modalMode,modalValue) {
 		//console.log(from);
@@ -180,7 +181,7 @@ define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Hand
 		}
 
 	}*/
-	function relationships(){
+	function relationships1(){
 
 	}
 
