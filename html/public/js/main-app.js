@@ -82,7 +82,14 @@ require([
       //if(accessArray.slice(-1) != "/"){ accessArray = accessArray+"/" }
 
       console.log("Access:" + accessArray +" Hash:" + accessHash);
-            
+      switch(accessArray[3]) {
+        case "":
+          require(['app/login'], function(Login) {              
+            Login.run();
+          }); 
+          break;    
+      }
+
       /*switch(accessArray[3]) {
         case "app":         
           require(['app/app'], function(App) {              
@@ -104,13 +111,6 @@ require([
                   break;
               }                      
           }); 
-          break;
-
-        default: // CASE "  SITE"
-          require(['app/site', 'app/login'], function(Site,Login) {              
-              //site.run();  
-              Login.run();
-            }); 
           break;
       } */
 
