@@ -40,6 +40,8 @@ body { background: #FFF}
 .users-face { width: 48px; height:48px; margin-left:10px; float: left ;  }
 .users-face img {border-radius: 50%; }
 
+.card {box-shadow: 2px 2px 2px rgba(0,0,0,0.2); }
+
 ul.leftbuttons {  list-style: none; margin:35px 0 0 0 ; padding:0;  }
 ul.leftbuttons a { color:#A7A8AC; text-transform: uppercase;font-weight: 600}
 ul.leftbuttons li { width:80px; height:80px; margin: 0 0 12px; overflow: hidden; border-radius: 40px; }
