@@ -15,8 +15,19 @@
 		public function index() {
 			$this->view->render("app/head");
 			$this->view->render("app/nav");
-			//$this->view->render("app/board/list"); // buildpage
+			$this->view->render("app/clear");
 			$this->view->render("app/footer");
+		}
+
+		public function welcome() {
+			$hasBoards = Api::boards("array", "from", "1");
+			if ($hasBoards[0]['empty'] == 1){
+			//No boards, show tutorial
+				$this->view->render("app/welcome/tutorial");
+			} else {
+			//else show latest activity
+				$this->view->render("app/welcome/activity");
+			}
 		}
 
 		public function boards($action) {
@@ -43,18 +54,25 @@
 
 				//With Open Modal
 				case 'board':
-					$this->view->render("app/post/list"); // buildpage
+					$this->view->render("app/post/list");
 					break;
 				
 				default: // "board"
-					$this->view->render("app/post/list"); // buildpage
+					$this->view->render("app/post/list");
 					break;
 			}
 		}
-		public function relationships($action="add"){
+		public function relationships($action="add", $id){
 			switch ($action) {
-				case 'add':
-					$this->view->render("app/relationship/empty"); // buildpage
+				/*case 'add':
+					$this->view->render("app/relationship/empty");
+					break;*/
+				case 'addto':
+					if ($id == ""){
+						$this->view->render("app/relationship/add-choose");
+					} else {
+						$this->view->render("app/relationship/add");
+					}
 					break;
 			}
 

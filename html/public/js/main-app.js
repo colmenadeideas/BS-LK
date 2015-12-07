@@ -79,7 +79,10 @@ require([
       var accessHash = $.param.fragment();
       var accessHashPart = accessHash.split('/');
 
-      //if(accessArray.slice(-1) != "/"){ accessArray = accessArray+"/" }
+      /*if(accessArray.slice(-1) != "/"){ accessArray = accessArray+"/" 
+        window.location += "/"; 
+      }*/
+
 
       console.log("Access:" + accessArray +" Hash:" + accessHash);
       switch(accessArray[3]) {

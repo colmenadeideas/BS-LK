@@ -22,13 +22,16 @@ define(function() {
 			$('#preloader').fadeOut();
 			
 		} else {
+			
+			$('#preloader').show();	
+			var active_page = url.split('/');
+			console.log(active_page[0]);
+			
+			if (active_page[0] == "") {
+				window.location.hash = "#welcome";
+			} else {
+				cache[url] = $('<div class="view"/>').appendTo('#desktop').load(url, function() {
 
-			$('#preloader').show();			
-			//show preloader per request -- This is not related to first login preloader			
-			cache[url] = $('<div class="view"/>').appendTo('#desktop').load(url, function() {
-
-				var active_page = url.split('/');
-				console.log(active_page[0]);
 				switch(active_page[0]) {
 					case "boards":
 						switch (active_page[1]){
@@ -69,10 +72,11 @@ define(function() {
 						}
 											
 						break;
-					
-				}
-				$('#preloader').fadeOut();
-			});
+					}
+					$('#preloader').fadeOut();
+				});
+			}
+
 			
 		}
 		

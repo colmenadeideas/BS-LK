@@ -7,7 +7,7 @@
 				{{#each boards}}
 					
 					<div class="board-choose col-lg-4 col-md-6 col-sm-6 col-xs-12" id="board-{{id}}">
-						<a href="#posts/addto/{{id}}">
+						<a href="#relationships/addto/{{id}}">
 							<div class="button col-lg-12" >
 								<div class="lastpost" style="background-image:url(<?php echo IMAGES; ?>photo_default.jpg)">
 								</div>
@@ -31,6 +31,4 @@
 
 	</div>
 	
-
-
 </div>

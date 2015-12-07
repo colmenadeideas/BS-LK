@@ -40,7 +40,23 @@ body { background: #FFF}
 .users-face { width: 48px; height:48px; margin-left:10px; float: left ;  }
 .users-face img {border-radius: 50%; }
 
-.card {box-shadow: 2px 2px 2px rgba(0,0,0,0.2); }
+.card { box-shadow: 2px 2px 4px rgba(0,0,0,0.25); border: solid thin #F5F5F5; padding-bottom: 15px}
+.card input[type="text"] { padding-left: 35px; border: none; border-bottom: solid thin #1A90E5; box-shadow: none; 
+	border-radius: 0px; margin-bottom: 20px
+}
+.card hr { margin: 20px 0 40px;}
+.card hr.end { border-color:#FFF;}
+.placeholder-icon { 
+	position: relative; 
+    top: 30px;
+    left: 0;
+    float: left;
+    color: #999;
+}
+.btn-skip { background: none; border: solid thin #ccc; color: #888; transition: all ease 0.5s;}
+.btn-skip:hover { border-color:#333; color: #333 }
+.card .btn { text-transform: uppercase;}
+.next-step { color: #1A90E5; font-size: small; text-transform: uppercase; }
 
 ul.leftbuttons {  list-style: none; margin:35px 0 0 0 ; padding:0;  }
 ul.leftbuttons a { color:#A7A8AC; text-transform: uppercase;font-weight: 600}

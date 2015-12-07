@@ -11,7 +11,7 @@ class Api extends ApiQuery {
 			echo json_encode($array_final, JSON_UNESCAPED_UNICODE);
 		} else {
 			//MODO "ARRAY"
-			echo $array_final;
+			return $array_final;
 		}
 	}
 
@@ -61,6 +61,9 @@ class Api extends ApiQuery {
 			}
 			//Return Function
 			Api::printResults($print, $array_final);
+			if ($print == 'array'){
+				return $array_final;
+			}
 		}
 
 	}
