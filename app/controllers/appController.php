@@ -64,9 +64,9 @@
 		}
 		public function relationships($action="add", $id){
 			switch ($action) {
-				/*case 'add':
+				case 'add':
 					$this->view->render("app/relationship/empty");
-					break;*/
+					break;
 				case 'addto':
 					if ($id == ""){
 						$this->view->render("app/relationship/add-choose");
