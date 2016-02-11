@@ -658,8 +658,8 @@
 								/*
 									aqui se debe redirecionar a la vista requerida 
 								*/
-								$this->view->render("app/welcome/activity");
-
+								header('location: '. URL.'app/');	
+										
 							} 
 							else if (empty($already_registered)) 
 							{
