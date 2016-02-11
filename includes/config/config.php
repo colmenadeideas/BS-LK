@@ -38,7 +38,7 @@
 	define('INSTAGRAM_CLIENT_ID','8a6d178cc1cc45e68d93bf5e077a2619');
 	define('INSTAGRAM_CLIENT_SECRET','817f141d571f466fa29f9e1deef360df');
 	define('INSTAGRAM_REDIRECT_URI',URL.'account/oauth/instagram/');
-		
+		     
 
 	//Hash definitions
 	define("PBKDF2_HASH_ALGORITHM", "sha256");

@@ -244,50 +244,40 @@
 		}
 		
 		
-		public function checkPermissions ($role, $controller) {
+		public function checkPermissions ($role, $controller) 
+		{
 			
 			$permisos =	DB::query("SELECT * FROM " . DB_PREFIX . "users_role_permissions WHERE role=%s", $role);
 			
 			$permisos_result = json_decode($permisos[0]['permissions'], TRUE);
 			
-			foreach ($permisos_result as $key => $value) {
+			foreach ($permisos_result as $key => $value) 
+			{
 				//Check if Menu is authorized for user role
-				if ($value == 1) { 
+				if ($value == 1) 
+				{ 
 					$menu = DB::query("SELECT * FROM " . DB_PREFIX . "users_role_menu WHERE id=%s AND status='active' LIMIT 1", $key);	
 					$authorized[] = $menu[0]['url'];							
 				}
 			}
-			
-			/*if ($controller == 'miweb') {
-					
-				$authorized_url[] = $permisos[0]['area'];
-				
-			} else {*/
-			/*
-			 * En este caso el nivel de autorizacion depende del controlador completo,
-			 * no se evalua el metodo.
-			 * Si se distinguirán niveles de acceso segun el metodo, hay que reformular 
-			 * el handlelogin() para que obtenga el metodo convocado tambien
-			 */
-				foreach ($authorized as $key => $value) {
+			foreach ($authorized as $key => $value) 
+			{
 					//tomar controller autorizado
 					$url = explode('/', $value);
 					$authorized_url[] = $url[0];	
-				}
-				
-			//}
+			}
+
 			//If not Authorized, Redirect to authorized home
 			if (!in_array($controller,$authorized_url)) {
 				//print_r($_SESSION);
 				echo "<h3 class='text-center'>".RESTICTED_AREA_SESSION."</h3>";				
 				exit;
-			}
-			
-			
+			}	
 		}
 		
-		
- 		public static function gotoMainArea() {
+		/*desarrollar las localizacion*/
+ 		public static function gotoMainArea() 
+ 		{
 			$role = User::get('role');
 			$permisos =	DB::query("SELECT * FROM " . DB_PREFIX . "users_role_permissions WHERE role=%s", $role);
 

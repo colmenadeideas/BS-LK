@@ -7,118 +7,47 @@
 	 * - First time login 
 	 */
 	
-	class accountController extends Controller {
+	class accountController extends Controller 
+	{
 		
-		public function __construct() {	
+		public function __construct() 
+		{	
 			
 			parent::__construct();	
 		}
-	
-		public function index() {
+		public function index() 
+		{
 							
 			$this->signin();		
 		}
 		
 		// SIGNIN: verifies if User already logged in, if not shows login screen
-		public function signin() {
+		public function signin() 
+		{
 
 			$already_loggedin = User::get('role');
 			
-			if (empty($already_loggedin)) {
+			if (empty($already_loggedin)) 
+			{
 				
 				$this->view->title = SITE_NAME. " | " .SITE_NAME__SIGN_IN ;						
 				$this->view->render('login/index');
 				
-			} else {
+			} 
+			else 
+			{
 				//Redirect		
 				$this->identify();
 			}
 		}
 		
-		//Log in with Social Networks
-		public function oauth($with="") {
-			
-			switch ($with) {
-
-				case 'instagram':
-
-				$code = escape_value($_GET['code']);
-
-				if (isset($code)) {
-
-					// receive and store OAuth token
-					$data = $this->instagram->getOAuthToken($code);
-					$token = $data->access_token;					
-
-					if(!empty($data->user->username)) {
-						
-						//session_start();
-						//$_SESSION['access_token'] = $token;
-						//$this->instagram->setAccessToken($token);
-						// now we have access to all authenticated user methods
-						//$media = $this->instagram->getUserMedia();
-						//$arr = get_defined_vars();
-						//print_r($arr);
-
-						//Check if already exist in User database
-						$already_registered =	$this->model->getAccount($data->user->id, 'instagram_id');
-						
-						if(!empty($already_registered)){
-								
-							//TODO -> Usuarios que vienen invitados por otros
-							/*if ($already_registered[0]['status'] === 'sleep'){
-								//si está sleep ->
-								$array_user['wakeup'] 	= $already_registered[0]['id'];
-								//Register User				
-								require_once('usersController.php');	
-								$users = new usersController;	
-								$create_user = $users->create($array_user);	
-									
-							}*/
-							
-						} else if (empty($already_registered)) {
-
-							$array_user = json_decode(json_encode($data->user), true);
-							$array_user['instagram_id'] = $array_user['id'];
-							$array_user['data'] 		= $array_user;
-							$array_user['access_token'] = $data->access_token;
-							$array_user['status'] 		= 'active';
-								
-							//Register User				
-							require_once('usersController.php');	
-							$users = new usersController;	
-							$create_user = $users->create($array_user);	
-
-							if ($create_user > 0) { // user created
-								$this->view->redirect_link = URL .'account/identify';
-								$this->view->response = SYSTEM_PASSWORD_CHANGE;
-								$this->view->render('redirect');	
-							} else {
-								echo "hubo un error";
-							}
-							
-						}
-
-						
-					}
-
-				} else {
-						    // check whether an error occurred
-					if (isset($_GET['error'])) {
-						echo 'An error occurred: ' . $_GET['error_description'];
-					}
-				}
-				break;
-								
-			}
-			 
-
-		}
 		// LOGIN: Method called by login form, process the form and returns authorization response from server
-		public function login() {
+		public function login() 
+		{
 				
 			$array_datos = array();	
-			foreach ($_POST as $key => $value) {
+			foreach ($_POST as $key => $value) 
+			{
 				$campo = escape_value($key);
 				$valor = escape_value($value);
 				
@@ -129,7 +58,8 @@
 				$username = $email;
 				$validUser = $this->user->validateUsername($username);
 				
-				if(empty($validUser)){						
+				if(empty($validUser))
+				{						
 					//echo "error";				
 					$response["tag"] = "login";
 					$response["success"] = 0;
@@ -137,7 +67,9 @@
 		            $response["response"] = LOGIN_MESSAGE_ERROR;				
 					echo json_encode($response);
 					
-				} else {
+				} 
+				else 
+				{
 					if (!empty($accesstoken)) { //Regular login, else is coming from SocialNetwork login
 						$validPass = $this->user->validatePassword($username, $password);
 					} else {
@@ -183,76 +115,24 @@
 				
 		}
 		
-		
-		
-		
-		// AUTHENTICATE: Method called when user is verified via Email -after registration-, and is logging in for the first time	
-		public function authenticate($temp_password, $username) {
-			
-			$username = escape_value($username);
-			$password = escape_value($temp_password);			
-			
-			$validUser = $this->user->validateUsername($username);
-			
-			if(empty($validUser)){	//Wrong User					
-			
-				echo ERROR_AUTHENTICATE_MESSAGE;
-				exit;
-								
-			} else {
-				$validPass = $this->user->validatePassword($username, $password);
-				
-				if(empty($validPass)){ //Wrong Password
-				
-					echo ERROR_AUTHENTICATE_MESSAGE;
-					exit;				
-					
-				} else {
-					$role = escape_value($validUser[0]['role']);
-					$username = escape_value($validUser[0]['username']);
-					$this->user->init();
-			        $this->user->set('role', $role);
-					$this->user->set('loggedIn', true);
-			        $this->user->set('username', $username);
-			           
-					// Welcome
-					$this->firstlogin($password);					
-					exit;
-				}
-			}
-			
-		} 
-		
-		// IDENTIFY: verifies which session corresponds to user, and redirects them to appropiate area
-		public function identify () {
-				
-			User::checkSession();
-			//Auth::handleLogin('account');
-			User::gotoMainArea();			
-			
-		}
-		
 		// LOGOUT: kills session and redirects user to home
-		public function logout() {			
+		public function logout() 
+		{			
 			
 			$this->user->destroy();
 			header('location: '. URL);	
 		} 
-		
-		
-		
-		/*
-		 * USER CREATION
-		 */
-		 
+
 		// SEARCHREGISTERED: Method called by form RECOVERY, to async check if user is in fact registered
 		function searchregistered($field, $data){
 			$result = $this->model->getAccount($data, $field);
 			echo json_encode($result);
 		}
-		
+
+
 		// CHECKREGISTERED: Method called by form REGISTRATION, to async check if user is already registered
-		function checkregistered($what) {
+		function checkregistered($what) 
+		{
 			
 			//Check if already exist in User database
 			switch (escape_value($what)) {
@@ -282,9 +162,10 @@
 			    echo 'false';
 			}
 		}
-		
+
 		// RECAPTCHA: Method called by form to check if valid captcha was provided
-		function recaptcha() {
+		function recaptcha() 
+		{
 			
 			$resp = recaptcha_check_answer (RECAPTCHA_PRIVATEKEY,
 			                                $_SERVER["REMOTE_ADDR"],
@@ -300,14 +181,15 @@
 			}
 
 		}
-		
-		
-		// PROCESS: Method called by form REGISTRATION, to process vars and create user
-		function process() {
+
+				// PROCESS: Method called by form REGISTRATION, to process vars and create user
+		function process() 
+		{
 			
 			$array_data = array();	
 			
-			foreach ($_POST as $key => $value) {
+			foreach ($_POST as $key => $value) 
+			{
 				$field = escape_value($key);
 				$field_data = escape_value($value);				
 				$array_data[$field] = $field_data;
@@ -357,87 +239,89 @@
 				$array_user['avatar'] 		= $encoded_image;
 				
 						
-			} else	
+			} 
+
 					
 			//Google			
 			//if (isset($array_data['google'])){
-			if ($array_data['socialnetwork'] == 'google'){
-				$array_user['name'] 		= $array_data['given_name'];
-				$array_user['lastname'] 	= $array_data['family_name'];	
-				$array_user['gender'] 		= strtoupper( substr($array_data['gender'], 0, 1) ); //just first leter			
+				if ($array_data['socialnetwork'] == 'google')
+				{
+					$array_user['name'] 		= $array_data['given_name'];
+					$array_user['lastname'] 	= $array_data['family_name'];	
+					$array_user['gender'] 		= strtoupper( substr($array_data['gender'], 0, 1) ); //just first leter			
+					
+					//Google picture
+					$image_data=file_get_contents($array_data['picture']);
+					$encoded_image=base64_encode($image_data);
+					$array_user['avatar'] 		= $encoded_image;							
+					//Google data
+					$array_user['data']['google_id'] = $array_data['id'];
+					$array_user['data']['locale'] = $array_data['locale'];	
+									
 				
-				//Google picture
-				$image_data=file_get_contents($array_data['picture']);
-				$encoded_image=base64_encode($image_data);
-				$array_user['avatar'] 		= $encoded_image;							
-				//Google data
-				$array_user['data']['google_id'] = $array_data['id'];
-				$array_user['data']['locale'] = $array_data['locale'];	
-								
-			
-			}
-					
-			$array_user['data']['creationdate'] = date("Y-m-d h:i:s");
-			
-			$array_user['data'] = json_encode($array_user['data']);
-			
-			
-			//Check if already exist in User database
-			$already_registered =	$this->model->getAccount("",$array_data['email'], 'username');
-			
-			if(!empty($already_registered)){
-					
-				if ($already_registered[0]['status'] === 'sleep'){
-					//si está sleep ->
-					$array_user['wakeup'] 	= $already_registered[0]['id'];
-					//Register User				
-					require_once('usersController.php');	
-					$users = new usersController;	
-					$create_user = $users->create($array_user);	
-						
 				}
-				
-			} else if (empty($already_registered)) {
 					
-				//Register User				
-				require_once('usersController.php');	
-				$users = new usersController;	
-				$create_user = $users->create($array_user);	
-			}
-			
-			if ($create_user > 0) {								
-				echo REGISTRATION_MESSAGE_SUCCESS;		
-			} else {
-				echo REGISTRATION_MESSAGE_ERROR;
-			}
-			
-			
+					$array_user['data']['creationdate'] = date("Y-m-d h:i:s");
+					
+					$array_user['data'] = json_encode($array_user['data']);
+					
+					
+					//Check if already exist in User database
+					$already_registered =	$this->model->getAccount("",$array_data['email'], 'username');
+					
+					if(!empty($already_registered)){
+							
+						if ($already_registered[0]['status'] === 'sleep'){
+							//si está sleep ->
+							$array_user['wakeup'] 	= $already_registered[0]['id'];
+							//Register User				
+							require_once('usersController.php');	
+							$users = new usersController;	
+							$create_user = $users->create($array_user);	
+								
+						}
+						
+					} else if (empty($already_registered)) {
+							
+						//Register User				
+						require_once('usersController.php');	
+						$users = new usersController;	
+						$create_user = $users->create($array_user);	
+					}
+					
+					if ($create_user > 0) {								
+						echo REGISTRATION_MESSAGE_SUCCESS;		
+					} else {
+						echo REGISTRATION_MESSAGE_ERROR;
+					}
 		}
-		
-		
-		
-		
-		/*
+
+
+				/*
 		 * SETTINGS methods
 		 */
 		 
 		// FIRSTLOGIN: takes user to inmediately set a password ( when coming from AUTHENTICATE from mail he doesn't have one);
-		public function firstlogin($old_password= '') {
-			
-			if (!empty($this->user->get('socialnetwork'))) {
+
+		public function firstlogin($old_password = '') 
+		{
+			$Social = $this->user->get('socialnetwork');
+			if (!empty($Social)) 
+			{
 				// Insertar registro de Session				
 				$username 	= $this->user->get('username');
 				User::logSession($username);
 				
-				$this->view->redirect_link = URL .'account/identify';
+				$this->view->redirect_link = URL.'account/identify';
 				$this->view->render('redirect');
 				
 			} else {
-				$this->edit('password', $old_password);
+				$this->edit('password',$old_password);
 			}			
 			
 			
 		}
+
 		// PROFILE: shows main Account area
 		public function profile () {
 			$this->edit('profile');
@@ -479,7 +363,8 @@
 			
 			$this->view->page = "";
 
-			switch ($what) {
+			switch ($what) 
+			{
 				case 'password':
 					
 					$this->view->title = "Configuración | Clave";
@@ -503,30 +388,9 @@
 			}			
 			
 		}
-		
 
-
-		/*
-	 	* function register() {			
-			
-			$already_loggedin = User::get('role');
-			
-			if (empty($already_loggedin)) {
-				
-				$this->view->title = "Registrarse |" . SITE_NAME;
-				$this->view->render('default/head');
-				$this->view->render('registration/public');
-				$this->view->render('default/footer');
-				
-			} else {
-				//Redirect		
-				$this->identify();
-			}
-			
-			
-		}*/
-		
-		public function update($what) {
+		public function update($what) 
+		{
 				
 			switch ($what) {
 				case 'data':
@@ -592,7 +456,8 @@
 					$data = $current_user[0]['data'];
 					$data_temp = json_decode($data,true);
 					//use as array
-					foreach ($data_temp as $key => $value) {
+					foreach ($data_temp as $key => $value) 
+					{
 						$array_fb['data'][$key] = $value;
 					}
 										
@@ -618,10 +483,12 @@
 					
 					$userdata 	= $this->user->getUserdata($role, $username);
 					
-					if (empty($userdata)) {
+					if (empty($userdata)) 
+					{
 						exit;
-						
-					} else {
+					} 
+					else 
+					{
 						
 						$email 	= $userdata[0]['email'];
 								
@@ -711,6 +578,152 @@
 				
 				
 		
-		}	
+		}
+
+
+
+		// AUTHENTICATE: Method called when user is verified via Email -after registration-, and is logging in for the first time	
+		public function authenticate($temp_password, $username) 
+		{
+			
+			$username = escape_value($username);
+			$password = escape_value($temp_password);			
+			
+			$validUser = $this->user->validateUsername($username);
+			
+			if(empty($validUser)){	//Wrong User					
+			
+				echo ERROR_AUTHENTICATE_MESSAGE;
+				exit;
+								
+			} else {
+				$validPass = $this->user->validatePassword($username, $password);
+				
+				if(empty($validPass)){ //Wrong Password
+				
+					echo ERROR_AUTHENTICATE_MESSAGE;
+					exit;				
+					
+				} else {
+					$role = escape_value($validUser[0]['role']);
+					$username = escape_value($validUser[0]['username']);
+					$this->user->init();
+			        $this->user->set('role', $role);
+					$this->user->set('loggedIn', true);
+			        $this->user->set('username', $username);
+			           
+					// Welcome
+					$this->firstlogin($password);					
+					exit;
+				}
+			}
+			
+		} 
+
+
+
+
+		//Log in with Social Networks
+		public function oauth($with="") 
+		{
+			
+			switch ($with) {
+
+				case 'instagram':
+
+					$code = escape_value($_GET['code']);
+
+					if (isset($code)) 
+					{
+
+						// receive and store OAuth token
+						$data = $this->instagram->getOAuthToken($code);
+						$token = $data->access_token;					
+
+						if(!empty($data->user->username)) {
+							
+							//session_start();
+							//$_SESSION['access_token'] = $token;
+							//$this->instagram->setAccessToken($token);
+							// now we have access to all authenticated user methods
+							//$media = $this->instagram->getUserMedia();
+							//$arr = get_defined_vars();
+							//print_r($arr);
+
+							//Check if already exist in User database
+							$already_registered =	$this->model->getAccount($data->user->id, 'instagram_id');
+							
+							if(!empty($already_registered))
+							{
+								/*
+									aqui se debe redirecionar a la vista requerida 
+								*/
+								$this->view->render("app/welcome/activity");
+
+							} 
+							else if (empty($already_registered)) 
+							{
+
+								$array_user = json_decode(json_encode($data->user), true);
+								$array_user['instagram_id'] = $array_user['id'];
+								$array_user['data'] 		= $array_user;
+								$array_user['access_token'] = $data->access_token;
+								$array_user['status'] 		= 'active';
+									
+								//Register User				
+								require_once('usersController.php');	
+								$users = new usersController;	
+								$create_user = $users->create($array_user);	
+
+								if ($create_user > 0) { // user created
+									/* LUEGO DE DEFINIR LA FUNCION IDENTIFY */
+
+									/*$this->view->redirect_link = URL .'account/identify';
+									$this->view->response = SYSTEM_PASSWORD_CHANGE;
+									$this->view->render('redirect');	*/
+									$this->view->render("app/welcome/tutorial");
+								} else {
+									echo "hubo un error";
+								}
+
+								
+							}
+
+							
+						}
+
+					} else {
+							    // check whether an error occurred
+						if (isset($_GET['error'])) {
+							echo 'An error occurred: ' . $_GET['error_description'];
+						}
+					}
+				break;
+
+				case 'facebook':
+					# code...
+					break;
+								
+			}
+			 
+
+		}
+		// IDENTIFY: verifies which session corresponds to user, and redirects them to appropiate area
+
+
+
+		public function identify () 
+		{
+			
+			User::checkSession();
+			//Auth::handleLogin('account');
+			User::gotoMainArea();			
+			
+		}
+
+
+
+		
+		
 	}
 ?>

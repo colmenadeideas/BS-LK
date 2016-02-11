@@ -23,7 +23,12 @@
 									<i class="fa fa-instagram"></i>
 									Entrar con INSTAGRAM 
 								</a>
-								<br><br>
+								<br>								
+								<!--a href="<?php echo $this->button; ?>" class="btn btn-default btn-lg btn-wide">
+									<i class="fa fa-facebook"></i>
+									Entrar con FACEBOOK
+								</a>
+								<br--><br>
 							<small>¿No tienes cuenta? <a href="#">REGISTRATE</a></small>
 						</div>
 						<!--log choices-->
