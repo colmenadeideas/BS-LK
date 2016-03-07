@@ -19,8 +19,7 @@
 			$this->view->render("app/footer");
 		}
 
-		public function welcome() 
-		{
+		public function welcome() {
 			$hasBoards = Api::boards("array", "from", "1");
 			if ($hasBoards[0]['empty'] == 1){
 			//No boards, show tutorial
@@ -31,8 +30,7 @@
 			}
 		}
 
-		public function boards($action = '') 
-		{
+		public function boards($action = '') {
 			switch ($action) {
 				case 'add':
 					$this->view->render("app/board/add");
