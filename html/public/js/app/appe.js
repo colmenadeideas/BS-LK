@@ -3,7 +3,7 @@ define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Hand
 		console.log("Board-Template");
 		window.location.hash = '#boards'; //for binding to back state TODO could add to url params for refreshing maybe
 		
-		$.getJSON(URL+"api/boards/json/from/1", function(data) {
+		$.getJSON(globals.URL+"api/boards/json/from/1", function(data) {
 		
 			var TemplateScript = $("#Board-Template").html(); 
 	        var Template = Handlebars.compile(TemplateScript);

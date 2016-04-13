@@ -13,6 +13,9 @@
 							AND $param REGEXP '\"([)^".$id."+$(])'");
 
 		}
+		public function lastRelationship(){
+			return DB::query("SELECT * FROM " . DB_PREFIX . "relationships ORDER BY id DESC");
+		}
 
 		public function getBoards($param, $id){
 			$param = escape_value($param);

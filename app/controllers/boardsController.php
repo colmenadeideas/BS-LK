@@ -18,8 +18,11 @@
 			$array_data['data']['namespace'] = escape_value($_POST['namespace']);
 			$array_data['data'] = json_encode($array_data['data'], TRUE);
 			
+			$lastRelationshipID = ApiQuery::lastRelationship();
+			$array_data['relationship'] = $lastRelationshipID[0]['id']+1;
+
 			$insert = $this->helper->insert("boards", $array_data);
-			$boardID = DB::insertId();
+			$boardID = DB::insertId();	
 			
 			//RELATIONSHIP DATA
 			$array_relationship['users']['owner'] = $user;
