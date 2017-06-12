@@ -45,13 +45,26 @@ class Api extends ApiQuery {
 				$array_final["boards"][$i]['data'] = json_decode($boards[0]['data'], TRUE);
 
 				//Users
-				$users = json_decode($relationship['users'], TRUE);
+				$users_group = json_decode($relationship['users'], TRUE);
+
 				$e = 0;
-				foreach ($users as $user) {
-					$userData = Api::getUser($user['id']);
+				//print_r($array_final); 
+				//print_r($relationship['users']); exit;
+				/*foreach ($users as $user) {
+					$userData = Api::getUser($user['id']); 
 					$array_final["boards"][$i]['users'][$e] = $userData[0];
 					$e++;
+				}*/
+				foreach ($users_group as $roles) {
+
+					$users = $roles['users'];
+					foreach ($users as $user) {
+						$userData = Api::getUser($user['id']); 
+						$array_final["boards"][$i]['users'][$e] = $userData[0];
+						$e++;
+					}
 				}
+
 				//Posts count
 				$postCount = Api::getPosts("parent", $boards[0]['id']);
 				$count = DB::count();

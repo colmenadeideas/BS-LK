@@ -68,11 +68,27 @@
 			}
 		},
 		{
+			"file": "app/views/app/post/list.php",
+			"settings":
+			{
+				"buffer_size": 3813,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "html/public/js/app/posts.js",
+			"settings":
+			{
+				"buffer_size": 5030,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "app/controllers/accountController.php",
 			"settings":
 			{
-				"buffer_size": 20693,
-				"line_ending": "Windows"
+				"buffer_size": 20396,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -108,14 +124,7 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/besign/Desktop/Delia/BS-LK",
-		"/C/Users/besign/Desktop/Delia/BS-LK/app",
-		"/C/Users/besign/Desktop/Delia/BS-LK/app/controllers",
-		"/C/Users/besign/Desktop/Delia/BS-LK/app/models",
-		"/C/Users/besign/Desktop/Delia/BS-LK/html",
-		"/C/Users/besign/Desktop/Delia/BS-LK/includes",
-		"/C/Users/besign/Desktop/Delia/BS-LK/includes/libs",
-		"/C/Users/besign/Desktop/Delia/BS-LK/pre"
+		"/Users/dlarez/Delia-E-Larez/Trabajos/BS-LK"
 	],
 	"file_history":
 	[
@@ -234,13 +243,14 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/dlarez/Delia-E-Larez/Trabajos/BS-LK/html",
 			"C:\\Users\\besign\\Desktop\\Delia\\BS-LK",
 			"",
 			"/Users/dlarez/Delia-E-Larez/Trabajos/Arte Casero/Nutribites/Web/wp-content"
@@ -251,6 +261,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Singlec",
+			"commentPartial",
+			"partia",
 			"identify",
 			"print_r",
 			"BEEAPPS",
@@ -333,7 +346,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -349,8 +362,8 @@
 						"selection":
 						[
 							[
-								1017,
-								1017
+								55,
+								55
 							]
 						],
 						"settings":
@@ -359,27 +372,85 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1531.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/controllers/accountController.php",
-					"semi_transient": false,
+					"file": "app/views/app/post/list.php",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 20693,
+						"buffer_size": 3813,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6144,
-								6144
+								2412,
+								2412
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 691.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "html/public/js/app/posts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5030,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4351,
+								4351
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1525.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/controllers/accountController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								348,
+								348
 							]
 						],
 						"settings":
@@ -388,7 +459,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2703.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -445,6 +516,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"hash",
+				"html/public/js/app/hashchange.js"
+			]
 		],
 		"width": 0.0
 	},

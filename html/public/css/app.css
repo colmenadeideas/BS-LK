@@ -2,7 +2,7 @@ body { background: #FFF}
 .leftactions{
 	box-sizing: border-box;
 	padding: 5px 30px 30px;
-	position: fixed;
+	/*position: fixed;*/
 	/*background-color: #05B666;*/
 	text-align: left;
 	color: #2B2E31;
@@ -16,7 +16,7 @@ body { background: #FFF}
 	margin-top: 100px;
 /*	position: fixed; right: 0; top:0;*/
 	padding-top: 50px;
-	margin-left:150px 
+/*	margin-left:150px */
 }
 
 .board-choose .button { border: solid 3px #BD45FE; /*E0A8FF*/  padding-top: 10px; 
@@ -31,6 +31,9 @@ body { background: #FFF}
 	margin-bottom: 25px;
 	/*background-color: #ffffff;*/
 }
+
+.message-text { /*max-width: 50%;*/ margin: auto; text-align: center; margin-top: 40px }
+
 .post small { font-weight: bold;    color: #9EC7CE; }
 .board .image { box-shadow: 2px 2px 2px rgba(0,0,0,0.3); }
 .board .overtitle { background: #FFF; position: absolute; bottom: 0px;  margin-right: 15px; padding-bottom: 10px;}
@@ -162,6 +165,8 @@ a.btn-add, a.btn-add:hover{ color:#FFF }
 .commment-input .btn {background: #FFF; color:#444444;}
 
 .no-posts img, .no-boards img, .centered-div img { margin: 10px auto; }
+
+.no-posts, .no-boards { float: none  }
 
 .posts-list{
 			list-style:none;

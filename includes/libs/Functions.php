@@ -1,10 +1,10 @@
 <?php
 	//Main anti XSS function
 	function escape_value($data) {
-		if (ini_get('magic_quotes_gpc')) {
+		/*if (ini_get('magic_quotes_gpc')) {
 			$data = stripslashes($data);
 		}
-		$data = strip_tags($data, '<p><a><br>');
+		$data = strip_tags($data, '<p><a><br>');*/
 		//use this if local
 		return $data;
 		//use this for server

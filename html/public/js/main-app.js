@@ -63,7 +63,7 @@ require.config({
         'app/posts': ['jquery','common', 'globals','app/search','assets/jquery.easing.min', 'assets/fileupload/jquery.fileupload'],
         'app/app': ['jquery','common', 'globals','assets/jquery.validate.min', 'app/posts'],
         'app/login': ['jquery','globals','assets/jquery.validate.min'],
-        'app/site':  ['globals', 'app/login'],
+        //'app/site':  ['globals', 'app/login'],
         'app/hashchange': ['common', 'assets/handlebars.min', 'app/site', 'app/login'],
     }
 });
@@ -82,7 +82,6 @@ require([
       /*if(accessArray.slice(-1) != "/"){ accessArray = accessArray+"/" 
         window.location += "/"; 
       }*/
-
 
       console.log("Access:" + accessArray +" Hash:" + accessHash);
       switch(accessArray[3]) {

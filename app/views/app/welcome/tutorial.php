@@ -1,4 +1,4 @@
-//
+
 point slider 
 welcome to Likes, let's start right away
 1 create your fist board

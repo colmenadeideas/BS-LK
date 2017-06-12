@@ -1,11 +1,12 @@
 define(['globals', 'assets/handlebars.min'], function(globals, Handlebars) {
 	
 	function list() {
-
 //		window.location.hash = '#boards'; 
+
 		console.log("listing");
-		$.getJSON(URL+"api/boards/json/from/1", function(data) {
-		
+		var userObj = globals.getUser;
+
+		$.getJSON(URL+"api/boards/json/from/"+userObj.userdata.id, function(data) {		
 			var TemplateScript = $("#Board-Choose-Template").html(); 
 	        var Template = Handlebars.compile(TemplateScript);
 

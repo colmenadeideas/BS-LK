@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1A90E5</color>
+    <color name="colorPrimaryDark">#FF63DF</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#1A90E5</color>
+    <color name="colorAccent">#1A90E5</color>
+    <color name="LikesPurple">#BD45FE</color>
+    <color name="LikesPink">#FA69DE</color>
+    <color name="LikesOrange">#FF8719</color>
+    <color name="LikesBlue">#1A90E5</color>
+</resources>

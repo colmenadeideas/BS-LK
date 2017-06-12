@@ -25,7 +25,7 @@ define(function() {
 			
 			$('#preloader').show();	
 			var active_page = url.split('/');
-			console.log(active_page[0]);
+
 			
 			if (active_page[0] == "") {
 				window.location.hash = "#welcome";
@@ -39,13 +39,12 @@ define(function() {
 								require(['app/boards'], function(Boards) {
 									Boards.add();
 								});	
-							break;
-							
+								break;							
 							default:
-								require(['app/appe'], function(App) {
+								require(['app/app'], function(App) {
 									App.boards();
 								});				
-							break;
+								break;
 						}
 						break;
 
@@ -60,15 +59,14 @@ define(function() {
 								console.log("EDIT");
 								break;*/
 							default:
-								require(['app/appe'], function(App) {
+								require(['app/app'], function(App) {
 									if(active_page[3] == 'modal'){
 										App.posts(active_page[1],active_page[2],active_page[3],active_page[4]);
 									} else {
 										App.posts(active_page[1],active_page[2]);
 									}
-								});	
-							
-							break;
+								});								
+								break;
 						}
 											
 						break;

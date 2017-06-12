@@ -4,6 +4,8 @@
 
 		public function __construct() {			
 			parent::__construct();
+
+			$this->view->user = $this->user->getUserdata();
 		}
 		
 		public function add($boardId) {
@@ -37,7 +39,7 @@
 			$array_data = array();	
 
 			$array_data['post'] = escape_value($post_id);
-			$array_data['user'] = "1";
+			$array_data['user'] = $this->view->user[0]['id'];
 			//TODO set timestamp from function? will this give right GTM ZONE for front user?
 			$array_data['data']['text'] = escape_value($_POST['text']);
 			$array_data['data'] = json_encode($array_data['data']);

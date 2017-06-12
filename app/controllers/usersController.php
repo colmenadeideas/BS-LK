@@ -12,19 +12,21 @@
 		
 		//CREATE: Method called by ACCOUNTCONTROLLER to generate user after verification
 		public function create($data){
-				
-			//User
+			
+			 //User
 			$array_user['username'] = escape_value($data['username']);
-//			$array_user['role'] = escape_value($data['role']);
+			//$array_user['role'] = escape_value($data['role']);
 			$temp_key = uniqid(rand(), true);
 			if (isset($data['access_token'])) {
 				$array_user['access_token'] = $data['access_token'];
+				$array_user['pass_hash'] 	= $this->user->create_hash($data['access_token']);
 				$array_user['instagram_id'] = $data['instagram_id'];
 			} else {
 				$array_user['pass_hash'] = $this->user->create_hash($temp_key);
 			}
 			
-			$data_data = json_decode($data['data'], true);			
+			$data_data = json_decode($data['data'], true);	
+			
 			
 			
 			//Add User
@@ -97,10 +99,9 @@
 			
 			//Only accepts registered tables
 			switch ($table) {
-				//case 'patient': break;
-				//case 'doctor': break;
-				//case 'doctor_assistant': break;				
-				default: /* exit;*/ $table= 'users_profile'; break;
+				default: 
+					$table= 'users_profile'; 
+					break;
 			}
 			
 			$array_profile['id'] = $id;

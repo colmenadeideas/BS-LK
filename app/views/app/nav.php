@@ -1,4 +1,4 @@
-<div class="col-lg-2 col-md-2 leftactions">
+<div class="col-lg-2 col-md-2 col-sm-2 leftactions">
 	<ul class="leftbuttons">
 		<a href="#posts/addto/">
 			<li>
@@ -37,4 +37,4 @@
 	</ul>
 
 </div>
-<div id="desktop" class="col-lg-10 col-md-10">
+<div id="desktop" class="col-lg-10 col-md-10 col-sm-10">

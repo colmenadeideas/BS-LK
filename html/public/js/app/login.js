@@ -25,42 +25,25 @@ define(['globals'], function(globals) {
 					data : $(form).serialize(),
 					timeout : 12000,
 					success : function(response) {
-					//console.log('(' + response + ')');						
+						var response = JSON.parse(response);
+						console.log(response.response);
+						console.log(response.success);
 						$('.send').removeAttr("disabled");
-						$(responseDiv).addClass('alert alert-danger');
-						switch (response) {
-							//TODO Check this 'timeout'
-							case 'timeout':
-								var responseHtml = "<div>Problemas de conexión. Revise su Internet</div>";
-								$(responseDiv).slideDown(500);
-								$(responseHtml).hide().appendTo(responseDiv).fadeIn(1000).delay(3000).fadeOut(function() {
-									$(responseDiv).slideUp(500);
-								});								
-								
-								$(responseDiv).addClass('warning-response');
-								$(responseDiv).slideDown(500);
-								$(responseHtml).hide().appendTo(responseDiv).fadeIn(1000).delay(3000).fadeOut(function() {
-									$(responseDiv).slideUp(500);
-								});
-
+						
+						switch (response.success) {
+							case 1:
+								document.location = globals.URL + 'account/identify';
 								break;
-
-							case 'error':
-
-								var responseHtml = "<div>Usuario o Clave incorrecto</div>";
+							case 0:
+								var responseHtml = "<div>"+response.response+"</div>";
 								$(responseDiv).addClass('warning-response');
 								$(responseDiv).fadeIn(500);
 								$(responseHtml).hide().appendTo(responseDiv).fadeIn(1000).delay(3000).fadeOut(function() {
 									$(responseDiv).fadeOut(500);
 								});
-
 								break;
-
-							case 'welcome':
-								document.location = globals.URL + 'account/identify';
-								break;
-
 						}
+						
 
 					},
 					error : function(obj, errorText, exception) {

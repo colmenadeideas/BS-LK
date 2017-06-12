@@ -95,11 +95,11 @@
 		public function getUserdata(){
 			
 			$user = $this->get('username');
-			
+
 			if (!empty($user)) {
 				$role = $this->get('role');
 			
-				$table = $role; //'user_profile';
+				$table = 'users_profile';
 				$field = 'username';
 									
 				return DB::query("SELECT * FROM ". DB_PREFIX . $table ." WHERE ". $field ."=%s LIMIT 1", $user);
@@ -113,7 +113,7 @@
 				
 			$data  = User::get('username');
 			$role  = User::get('role');				
-			
+
 			//Check if user valid
 			$usr = new User();
 			$check_uservalid = $usr->validateUsername($data);
@@ -122,11 +122,10 @@
 			//Check if active session from User is already registered
 			$check_previous_session = User::check_session_inDB($data);
 			
-			
 			//El usuario no existe, existía una sesión vieja iniciada tal vez
 		 	if(empty($check_uservalid)) {		 		
 				User::destroy();
-				header('location: '.URL);
+				header('location: '.URL."/");
 				exit;	
 		 	} else {
 		 		
@@ -135,23 +134,9 @@
 			
 				if(empty($check_firsttime_session)) {
 					
-					switch ($role) {
-							
-						// DISTRIBUIDOR password is self choised, so log and move on
-						case 'cliente':
-							
-							if(empty($check_session)) { //if session not registered, log
-								User::logSession($data);
-							}
-							break;
-						
-						default:
-							//requieres Password Change First time	
-							header('location: '.URL.'account/firstlogin/');
-							exit;
-							break;
-					}
-						
+					//requieres Password Change First time	
+					header('location: '.URL.'account/firstlogin/');
+					
 					
 				} else {
 					//Not first Session, so log and move on
@@ -244,39 +229,46 @@
 		}
 		
 		
-		public function checkPermissions ($role, $controller) {
+		public static function checkPermissions ($role, $controller) {
 			
-			$permisos =	DB::query("SELECT * FROM " . DB_PREFIX . "users_role_permissions WHERE role=%s", $role);
-			
-			$permisos_result = json_decode($permisos[0]['permissions'], TRUE);
-			
-			foreach ($permisos_result as $key => $value) {
-				//Check if Menu is authorized for user role
-				if ($value == 1) { 
-					$menu = DB::query("SELECT * FROM " . DB_PREFIX . "users_role_menu WHERE id=%s AND status='active' LIMIT 1", $key);	
-					$authorized[] = $menu[0]['url'];							
+			if (CHECK_PERMISSIONS == "TRUE") {
+
+				$permisos =	DB::query("SELECT * FROM " . DB_PREFIX . "users_role_permissions WHERE role=%s", $role);
+				
+				$permisos_result = json_decode($permisos[0]['permissions'], TRUE);
+				
+				foreach ($permisos_result as $key => $value) {
+					//Check if Menu is authorized for user role
+					if ($value == 1) { 
+						$menu = DB::query("SELECT * FROM " . DB_PREFIX . "users_role_menu WHERE id=%s AND status='active' LIMIT 1", $key);	
+						$authorized[] = $menu[0]['url'];							
+					}
 				}
-			}
 
-			foreach ($authorized as $key => $value) {
-					//tomar controller autorizado
-					$url = explode('/', $value);
-					$authorized_url[] = $url[0];	
-			}
+				foreach ($authorized as $key => $value) {
+						//tomar controller autorizado
+						$url = explode('/', $value);
+						$authorized_url[] = $url[0];	
+				}
 
-			//If not Authorized, Redirect to authorized home
-			if (!in_array($controller,$authorized_url)) {
-				//print_r($_SESSION);
-				echo "<h3 class='text-center'>".RESTICTED_AREA_SESSION."</h3>";				
-				exit;
-			}	
+				//If not Authorized, Redirect to authorized home
+				if (!in_array($controller,$authorized_url)) {
+					//print_r($_SESSION);
+					echo "<h3 class='text-center'>".RESTICTED_AREA_SESSION."</h3>";				
+					exit;
+				}
+
+			} 
 		}
 		
 		/* desarrollar las localizacion */
  		public static function gotoMainArea() {
-			$role = User::get('role');
-			$permisos =	DB::query("SELECT * FROM " . DB_PREFIX . "users_role_permissions WHERE role=%s", $role);
-
+ 			if (CHECK_PERMISSIONS == "TRUE") {
+				$role = User::get('role');
+				$permisos =	DB::query("SELECT * FROM " . DB_PREFIX . "users_role_permissions WHERE role=%s", $role);
+			} else {
+				$permisos[0]['area'] = DEFAULT_MAIN_AREA."/";
+			}
 			header('location: '.URL.$permisos[0]['area']);
 		}
 		

@@ -1,8 +1,8 @@
 require.config({
-  baseUrl: "http://localhost/BS-OK/html/public/js",
-  requireDefine:true,
-  waitSeconds:7,
-  paths: {
+    baseUrl: "http://localhost/BS-LK/html/public/js",
+    requireDefine:true,
+    waitSeconds:200,
+    paths: {
           jquery:[  'assets/jquery.min', '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min'], // 2.0.0
           'async': 'assets/requirejs-plugins/async',          
         },  
@@ -25,10 +25,8 @@ require.config({
           'assets/bootstrap.min' : ['jquery'],
           'assets/jquery.validate.min': ['jquery'],
           'assets/jquery.easing.min': ['jquery'],   
-          //'assets/jquery.scrollTo.min': ['jquery'], 
-          //'assets/jquery.backstretch.min': ['jquery'],
           'functions': ['jquery', 'assets/jquery.validate.min'],
-          'assets/fullcalendar.min': ['jquery'/*,'assets/fullcalendar-es'*/],
+          'assets/fullcalendar.min': ['jquery'],
          'assets/jquery.geocomplete.min' : ['jquery'],
          'assets/bootstrap-datetimepicker':['jquery','assets/bootstrap.min'],
          
@@ -36,15 +34,17 @@ require.config({
          'app/settings': ['jquery','common', 'globals'],
          
        }
-     });
+});
 require([
-  'jquery',
-        'globals', 
-        //'app/start-site',
-        'app/settings'
-        ],
-        function($, settings ) { 
-          console.log("Loaded Settings");
-          //site.run();
-        }
+    'jquery',
+    'globals', //would replace 'common' eventually
+    'app/settings'
+    ],
+    function($, app, start) { 
+
+      require(['app/settings'], function(settings) {              
+        settings.run();
+      });
+
+    }
 );

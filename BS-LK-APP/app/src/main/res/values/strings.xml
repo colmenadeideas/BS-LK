@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LIKES</string>
+    <string name="title_section1">Add Posts</string>
+    <string name="title_section2">Change Boards</string>
+    <string name="title_section3">Pending LIKES</string>
+    <string name="title_section4">Relationships</string>
+    <string name="navigation_drawer_open">Open menu</string>
+    <string name="navigation_drawer_close">Close menu</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="noBoardsMessageTitle">¡Es hora de crear un Tablero!</string>
+    <string name="noBoardsMessage">Para comenzar crearemos el espacio donde podras agregar a tu equipo y cargar tus posts</string>
+    <string name="title_activity_add_board">Add Board</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="message_processing">Procesando...</string>
+
+</resources>

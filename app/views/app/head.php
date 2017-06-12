@@ -28,8 +28,13 @@
 	<script data-main="<?php echo JS; ?>main-app" src="<?php echo JS; ?>assets/require.js"></script>
 </head>
 <body>
-	<header class="head">
-		<h1><i class="heart glyphicon glyphicon-heart"></i> LIKES</h1>
+	<header class="head container-fluid">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<h1><i class="heart glyphicon glyphicon-heart"></i> LIKES</h1>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<?php $this->render('default/navbar'); ?>
+		</div>
 	</header>
 	
 	<div class="container-fluid row">

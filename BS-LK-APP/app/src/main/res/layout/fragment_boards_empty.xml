@@ -1,0 +1,69 @@
+<!--FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.colmenadeideas.likes.BoardsFragment">
+
+</FrameLayout-->
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" tools:context="com.colmenadeideas.likes.BoardsFragment"
+        android:background="#FFFFFF"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="40dp"
+        android:gravity="center|center_vertical|center_horizontal">
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/noBoards"
+        android:layout_alignParentTop="false"
+        android:nestedScrollingEnabled="false"
+        android:src="@drawable/likes_no_boards"
+        android:maxWidth="70dp"
+        android:scaleType="centerInside"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textTitle"
+        android:layout_centerHorizontal="true"
+        android:text="@string/noBoardsMessageTitle"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/noBoards"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInfo"
+        android:text="@string/noBoardsMessage"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/textTitle"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|right"
+            android:layout_alignParentBottom="true">
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle"
+                android:elevation="1dp"
+                android:src="@android:drawable/ic_input_add"
+                android:id="@+id/addButton" />
+
+        </RelativeLayout>
+</RelativeLayout>

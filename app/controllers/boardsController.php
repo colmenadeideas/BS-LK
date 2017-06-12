@@ -4,6 +4,8 @@
 
 		public function __construct() {			
 			parent::__construct();
+
+			$this->view->user = $this->user->getUserdata();
 		}
 		
 		public function add() {
@@ -14,7 +16,7 @@
 
 			$array_data = array();	
 
-			$user = "1";
+			$user = $this->view->user[0]['id'];
 			$array_data['data']['namespace'] = escape_value($_POST['namespace']);
 			$array_data['data'] = json_encode($array_data['data'], TRUE);
 			
@@ -25,9 +27,13 @@
 			$boardID = DB::insertId();	
 			
 			//RELATIONSHIP DATA
-			$array_relationship['users']['owner'] = $user;
+			$array_relationship['users']['owner'][]['id'] = $user;
+			//antes
+			//$array_relationship['users']['owner'] = $user; AL 130417 DELIA
 			$array_relationship['relationships']['boards'] = $boardID;
-			$array_relationship['roles']['owner'] = $user;
+			$array_relationship['roles']['owner'][]['id'] = $user;
+			//antes
+			//$array_relationship['roles']['owner'] = $user; AL 130417 DELIA
 
 			$array_relationship['users'] 		 = json_encode($array_relationship['users'], TRUE);
 			$array_relationship['relationships'] = json_encode($array_relationship['relationships'], TRUE);

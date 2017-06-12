@@ -5,9 +5,9 @@
 		public function __construct() {
 			
 			parent::__construct();
-			//Auth::handleLogin('panel');
+			Auth::handleLogin('app');
 	        $this->view->title = "LIKES";	 //Temporarly defined to avoid individual var
-	       // $this->view->user = $this->user->getUserdata(); //TODO Change  $this->view->username por $this->view->user
+	        $this->view->user = $this->user->getUserdata(); //TODO Change  $this->view->username por $this->view->user
 	        //$this->view->userdata  = array("id"=>"22", "username" => "dlarez", "role" => "doctor" 	);
 			
 		}
@@ -20,7 +20,7 @@
 		}
 
 		public function welcome() {
-			$hasBoards = Api::boards("array", "from", "1");
+			$hasBoards = Api::boards("array", "from", $this->view->user[0]['id']);
 			if ($hasBoards[0]['empty'] == 1){
 			//No boards, show tutorial
 				$this->view->render("app/welcome/tutorial");

@@ -1,5 +1,12 @@
 <?php
 	//Sistem messages
+	define ('SYSTEM_EMAIL_BGCOLOR', '#333333');
+	define ('SYSTEM_EMAIL_HEADCOLOR', '#333333');
+	define ('SYSTEM_EMAIL_BUTTONSCOLOR', '#333333');
+	define ('CONTACT_PHONENUMBER', '#333333');
+	
+
+	
 	define ('ERROR_AUTHENTICATE_MESSAGE', 'Ha ocurrido un error. La cuenta no ha podido activarse. Por favor contacte al administrador' );
 	define ('SYSTEM_EMAIL__YOUR_USER_IS_MESSAGE', 'Su usuario es: '); 
 	define ('ACTIVATION_USER_SUBJECT', 'Activación de Usuario en ' . SITE_NAME );

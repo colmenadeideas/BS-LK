@@ -1,6 +1,6 @@
 define(['globals', 'appassets/enhance', 'app/search', 'app/login'], function(globals, enhance, search, login ) {
 	
-	function run() {
+	/*function run() {
 		var currentLocation = getPage(4);
 		i = 4; //for animation
 		ii = 1; //for animation
@@ -119,6 +119,6 @@ define(['globals', 'appassets/enhance', 'app/search', 'app/login'], function(glo
       run: run,
       list: list,
       animateBackground: animateBackground
-	}
+	}*/
 
 });

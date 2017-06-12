@@ -17,16 +17,16 @@ class View {
 	public function buildpage($content = 'index', $area = ''){
 		
 		switch ($area) {
-			case 'doctor':				
+			/*case 'doctor':				
 				$head 	= "panel/head";
 				$nav 	= "panel/nav";
 				$footer = "panel/footer";
 				$ruta	 = '';
-				break;
+				break;*/
 			
 			case 'settings':				
 				$head 	= "settings/default/head";
-				$nav 	= "settings/default/nav";
+				$nav 	= "default/nav";
 				$footer = "settings/default/footer";
 				$ruta	 = '';
 				break;

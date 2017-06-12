@@ -1,3 +1,75 @@
+define(['globals'], function(globals) {
+	
+	function run() {
+		//Get Session
+		var accessArray = window.location.pathname.split('/');
+    	var accessHash = $.param.fragment();
+      	var accessHashPart = accessHash.split('/');
+
+      	var datam = "1";
+      	$.ajax({
+        	type : "POST",
+          	url : globals.URL + "account/getsession",
+          	data : $(datam).serialize(),
+		  	success : function(response) {
+	            var response = JSON.parse(response);
+	          	
+	          	if(accessArray[4] == "firstlogin" && response.socialnetwork == 1) {
+	          		updateEmail();
+				}
+          	}
+      	});
+	}
+
+	function updateEmail(){
+		
+		var responseDiv = "#response";
+		var form = '#form-provide-email' 
+    	$(form).validate({
+			submitHandler : function(form) {
+				$('#form-provide-email .send').attr('disabled', 'disabled');				
+				$.ajax({
+					type : "POST",
+					url : globals.URL + "account/update/email",
+					data : $(form).serialize(),
+					timeout : 12000,
+					success : function(response) {
+						var response = JSON.parse(response);
+						console.log(response.response);
+						console.log(response.success);
+						$('.send').removeAttr("disabled");
+						
+						var responseHtml = "<div>"+response.response+"</div>";
+						$(responseDiv).addClass('warning-response');
+						$(responseDiv).fadeIn(500);
+						$(responseHtml).hide().appendTo(responseDiv).fadeIn(1000).delay(3000).fadeOut(function() {
+							$(responseDiv).fadeOut(500);
+						});
+						switch (response.success) {
+							case 1:
+								document.location = globals.URL + 'account/identify';
+								break;
+							case 0:
+								break;
+						}					
+
+					},
+					error : function(obj, errorText, exception) {
+						console.log(errorText);
+					}
+				});
+				return false;
+			}
+		});
+
+	}
+
+	return {
+		run: run,
+    	updateEmail: updateEmail
+	}  	
+});
+/*
 $(document).ready(function(e) {
 
 	var $validator = $('#password-update').validate({
@@ -136,3 +208,4 @@ function checkall(){
 function profileSend(){
 	
 }
+*/
