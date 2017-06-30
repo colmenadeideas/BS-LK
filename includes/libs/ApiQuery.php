@@ -9,8 +9,12 @@
 		public function getRelationships($param = "users", $id){
 			$param = escape_value($param);
 			$id = escape_value($id);
+			/*
+				30/06/2017	Esta consulta es cuando los datos estaban guardados como json
+
 			return DB::query("SELECT * FROM " . DB_PREFIX . "relationships WHERE $param LIKE '%".$id."%'
-							AND $param REGEXP '\"([)^".$id."+$(])'");
+							AND $param REGEXP '\"([)^".$id."+$(])'");		*/	
+			return DB::query("SELECT * FROM " . DB_PREFIX . "relationships WHERE $param = '".$id."'");
 
 		}
 		public function lastRelationship(){

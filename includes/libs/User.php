@@ -15,7 +15,7 @@
 			
 			if ($key === 'loggedIn') {
 				$_SESSION['loggedIn'] = time();
-				$_SESSION['randomkey'] = uniqid(rand(), true); //random session id 
+				$_SESSION['randomkey'] = 78;//uniqid(rand(), true); //random session id 
 				
 			} else {	
 				$_SESSION[$key] = $value;

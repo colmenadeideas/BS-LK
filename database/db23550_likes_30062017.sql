@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.4.10
+-- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Jun 12, 2017 at 07:59 PM
--- Server version: 5.6.33
--- PHP Version: 5.6.27
+-- Generation Time: Jun 30, 2017 at 11:05 PM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,7 @@ CREATE TABLE `boards` (
   `relationship` int(11) NOT NULL,
   `data` longtext CHARACTER SET latin1 NOT NULL,
   `creationdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `boards`
@@ -41,7 +41,9 @@ INSERT INTO `boards` (`id`, `relationship`, `data`, `creationdate`) VALUES
 (3, 1, '{"namespace":"Colmena"}', '2017-04-13 19:07:42'),
 (4, 4, '{"namespace":"otro"}', '2017-04-13 19:53:49'),
 (5, 5, '{"namespace":"Otro2"}', '2017-04-13 21:45:23'),
-(6, 1, '{"namespace":"TEST"}', '2017-04-20 13:15:37');
+(6, 1, '{"namespace":"TEST"}', '2017-04-20 13:15:37'),
+(7, 2, '{"namespace":"tablero de prueba "}', '2017-06-30 19:49:32'),
+(8, 3, '{"namespace":"post"}', '2017-06-30 20:02:23');
 
 -- --------------------------------------------------------
 
@@ -79,17 +81,40 @@ CREATE TABLE `posts` (
 
 CREATE TABLE `relationships` (
   `id` int(11) NOT NULL,
-  `users` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `relationships` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `roles` longtext COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `users` int(11) NOT NULL,
+  `relationships` int(11) NOT NULL,
+  `roles` int(11) NOT NULL COMMENT 'Id de la tabla roles',
+  `status` enum('Pending','Active','Cancel') DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `relationships`
 --
 
-INSERT INTO `relationships` (`id`, `users`, `relationships`, `roles`) VALUES
-(1, '{"owner":[{"id":"19"}]}', '{"boards":6}', '{"owner":[{"id":"19"}]}');
+INSERT INTO `relationships` (`id`, `users`, `relationships`, `roles`, `status`) VALUES
+(1, 19, 6, 1, NULL),
+(2, 19, 7, 1, NULL),
+(3, 19, 8, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `rol` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `rol`) VALUES
+(1, 'Admin'),
+(2, 'Colaborador'),
+(3, 'Cliente');
 
 -- --------------------------------------------------------
 
@@ -105,7 +130,7 @@ CREATE TABLE `users` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `pass_hash` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -127,7 +152,7 @@ CREATE TABLE `users_profile` (
   `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `data` longtext COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users_profile`
@@ -151,7 +176,7 @@ CREATE TABLE `user_session` (
   `session_randomkey` varchar(255) NOT NULL,
   `url_in` mediumtext NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_session`
@@ -167,7 +192,8 @@ INSERT INTO `user_session` (`id`, `username`, `ip_address`, `session_randomkey`,
 (10, 'likesapp.co', '190.142.16.246', '11254967158efcef37c3d82.96157456', 'localhost/BS-LK/html/account/oauth/instagram/?code=6665c9ec15f349ce8337157718dc3039', '2017-04-13 19:18:11'),
 (11, 'likesapp.co', '190.142.16.246', '183016963558f4a94c927589.80591148', 'localhost/BS-LK/html/account/oauth/instagram/?code=4f96222d58954471ae12ca924dbe0278', '2017-04-17 11:38:52'),
 (12, 'likesapp.co', '190.142.16.246', '187149641858f8b4515e4cf6.36453791', 'localhost/BS-LK/html/account/oauth/instagram/?code=49b9c659576140d083f61eac11ce60a0', '2017-04-20 13:14:57'),
-(13, 'likesapp.co', '190.142.16.246', '1006995144593ec8c7ca9b76.00364080', 'localhost/BS-LK/html/account/oauth/instagram/?code=de67d7fd4b5747ba9aaa44734c41f4b6', '2017-06-12 17:00:55');
+(13, 'likesapp.co', '190.142.16.246', '1006995144593ec8c7ca9b76.00364080', 'localhost/BS-LK/html/account/oauth/instagram/?code=de67d7fd4b5747ba9aaa44734c41f4b6', '2017-06-12 17:00:55'),
+(14, 'likesapp.co', '190.142.16.246', '78', 'localhost/BS-LK/html/app/relationships/addto/7', '2017-06-30 19:49:32');
 
 --
 -- Indexes for dumped tables
@@ -198,6 +224,12 @@ ALTER TABLE `relationships`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -223,7 +255,7 @@ ALTER TABLE `user_session`
 -- AUTO_INCREMENT for table `boards`
 --
 ALTER TABLE `boards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `comments`
 --
@@ -238,22 +270,27 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `relationships`
 --
 ALTER TABLE `relationships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `users_profile`
 --
 ALTER TABLE `users_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `user_session`
 --
 ALTER TABLE `user_session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

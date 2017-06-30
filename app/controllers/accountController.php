@@ -92,11 +92,12 @@
 					$username = escape_value($validUser[0]['username']);
 					
 					$profile = $this->model->getAccount($role, $validUser[0]['id']);
-					
+					$idprofile = escape_value($validUser[0]['id']);
 					$this->user->init();
 					$this->user->set('role', $role);
 					$this->user->set('loggedIn', true);
 					$this->user->set('username', $username);
+					$this->user->set('idprofile', $idprofile);
 
 					if (isset($access_token)) {
 						$this->user->set('socialnetwork', true);	

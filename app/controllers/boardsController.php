@@ -35,9 +35,13 @@
 			//antes
 			//$array_relationship['roles']['owner'] = $user; AL 130417 DELIA
 
-			$array_relationship['users'] 		 = json_encode($array_relationship['users'], TRUE);
+			$array_relationship['users'] 		 = $user;
+			$array_relationship['relationships'] = $boardID;
+			$array_relationship['roles'] 		 = 1;
+			
+			/*$array_relationship['users'] 		 = json_encode($array_relationship['users'], TRUE);
 			$array_relationship['relationships'] = json_encode($array_relationship['relationships'], TRUE);
-			$array_relationship['roles'] 		 = json_encode($array_relationship['roles'], TRUE);
+			$array_relationship['roles'] 		 = json_encode($array_relationship['roles'], TRUE);*/
 			
 			$insertRelationship = $this->helper->insert("relationships", $array_relationship);
 
