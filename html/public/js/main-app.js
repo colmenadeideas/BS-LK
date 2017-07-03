@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: "http://localhost/BS-LK/html/public/js",
+    baseUrl: "http://localhost:8888/BS-LK/html/public/js",
     requireDefine:true,
     waitSeconds:200,
     //Include the FileUpload as a package, so it can load all its own dependencies
@@ -60,6 +60,7 @@ require.config({
         'assets/bootstrap-editable.min','assets/jquery.scrollTo.min','assets/bootstrap-datetimepicker-v4','assets/jquery.geocomplete.min','assets/moment.min','assets/fullcalendar.min','assets/jsonsql','functions','config'],
         'app/search': ['jquery','common', 'globals'],
         'app/boards': ['jquery','common', 'globals'],
+        'app/relationship': ['jquery','common', 'globals'],
         'app/posts': ['jquery','common', 'globals','app/search','assets/jquery.easing.min', 'assets/fileupload/jquery.fileupload'],
         'app/app': ['jquery','common', 'globals','assets/jquery.validate.min', 'app/posts'],
         'app/login': ['jquery','globals','assets/jquery.validate.min'],
@@ -118,3 +119,4 @@ require([
 
     }
 );
+

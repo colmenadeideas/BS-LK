@@ -46,7 +46,17 @@ define(function() {
 								});				
 								break;
 						}
-						break;
+					break;
+
+					case "relationships":
+						switch (active_page[1]){					
+							default:
+								require(['app/relationship'], function(Relationship) {
+									Relationship.list();
+								});				
+								break;
+						}
+					break;
 
 					case "posts":
 						switch (active_page[1]){

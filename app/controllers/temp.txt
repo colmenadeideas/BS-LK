@@ -4,7 +4,7 @@
 			<a href="#">
 				<li>
 				<div class="users-face">
-					<img src="http://localhost/BS-LK/html/public/images/photo_default.jpg" class="img-responsive" alt="{{user.username}}">
+					<img src="http://localhost:8888/BS-LK/html/public/images/photo_default.jpg" class="img-responsive" alt="{{user.username}}">
 				</div> {{user.username}}:
 				</li>
 			</a>

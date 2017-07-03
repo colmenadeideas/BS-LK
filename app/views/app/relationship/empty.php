@@ -9,3 +9,5 @@
 	//if hay boards
 	<a href="#posts/addto/{{parent}}">Crear un post</a>
 </div>
+
+<?php $this -> render('app/relationship/list'); ?>

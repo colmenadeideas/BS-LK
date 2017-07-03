@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: "http://localhost/BS-LK/html/public/js",
+    baseUrl: "http://localhost:8888/BS-LK/html/public/js",
     requireDefine:true,
     waitSeconds:200,
     paths: {

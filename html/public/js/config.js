@@ -6,7 +6,7 @@ var isProcessing = false;
 
 if (modo === 'local') {
 
-	var URL = "http://localhost/BS-LK/html/";
+	var URL = "http://localhost:8888/BS-LK/html/";
 	var urlCheck = '/html/';
 
 	var position = 2;

@@ -36,3 +36,12 @@ define(['globals', 'assets/handlebars.min', 'app/posts'], function(globals, Hand
 	}
 
 });
+
+$(document).ready(function(){
+	console.log("I'm here");
+
+	$('#board_box .board .image').click(function(){
+		alert('no usar este metodo');
+	});
+
+});
